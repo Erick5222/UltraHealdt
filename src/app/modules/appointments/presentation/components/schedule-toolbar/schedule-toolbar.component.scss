@@ -1,0 +1,133 @@
+:host {
+  display: block;
+}
+
+.schedule-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.schedule-toolbar__navigation {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.schedule-toolbar__nav-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #475569;
+  cursor: pointer;
+}
+
+.schedule-toolbar__today-button {
+  height: 36px;
+  padding: 0 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #ffffff;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1;
+  color: #475569;
+  cursor: pointer;
+}
+
+.schedule-toolbar__range {
+  margin-left: 4px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1;
+  color: #111827;
+  white-space: nowrap;
+}
+
+.schedule-toolbar__search {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 10px;
+  min-width: 220px;
+  height: 44px;
+  padding: 0 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #f8fafc;
+  color: #94a3b8;
+
+  input {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    background: transparent;
+    font-size: 0.875rem;
+    color: #334155;
+    outline: none;
+
+    &::placeholder {
+      color: #94a3b8;
+    }
+  }
+}
+
+.schedule-toolbar__select-field {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 36px;
+  padding: 0 12px 0 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 999px;
+  background: #ffffff;
+  white-space: nowrap;
+
+  select {
+    min-width: 120px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    line-height: 1;
+    color: #334155;
+    outline: none;
+    cursor: pointer;
+  }
+}
+
+.schedule-toolbar__select-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1;
+  color: #64748b;
+}
+
+@media (max-width: 900px) {
+  .schedule-toolbar__search {
+    flex: 1 1 100%;
+    order: 3;
+  }
+
+  .schedule-toolbar__select-field {
+    order: 4;
+  }
+}
+
+@media (max-width: 640px) {
+  .schedule-toolbar__select-field select {
+    min-width: 100px;
+  }
+}

@@ -1,0 +1,46 @@
+:host {
+  display: block;
+}
+
+.occupational-medical-consultation {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.occupational-medical-consultation__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 20px;
+  align-items: start;
+}
+
+.occupational-medical-consultation__main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+}
+
+.occupational-medical-consultation__sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+@media (max-width: 1100px) {
+  .occupational-medical-consultation__layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .occupational-medical-consultation {
+    gap: 16px;
+  }
+
+  .occupational-medical-consultation__main {
+    gap: 16px;
+  }
+}

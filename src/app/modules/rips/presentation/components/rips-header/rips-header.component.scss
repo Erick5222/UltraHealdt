@@ -1,0 +1,97 @@
+.rips-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.rips-header__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 10px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  color: #0058be;
+  text-transform: uppercase;
+}
+
+.rips-header__eyebrow-line {
+  width: 28px;
+  height: 2px;
+  border-radius: 999px;
+  background: #0058be;
+  flex-shrink: 0;
+}
+
+.rips-header__title {
+  margin: 0 0 10px;
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: #00236f;
+}
+
+.rips-header__subtitle {
+  margin: 0;
+  max-width: 640px;
+  font-size: 0.9375rem;
+  font-weight: 400;
+  line-height: 1.55;
+  color: #64748b;
+}
+
+.rips-header__actions {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 12px;
+}
+
+.rips-header__history-button,
+.rips-header__generate-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 48px;
+  padding: 0 20px;
+  border-radius: 12px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.rips-header__history-button {
+  border: 1px solid #bfdbfe;
+  background: #eff6ff;
+  color: #0058be;
+}
+
+.rips-header__generate-button {
+  border: none;
+  background: #00236f;
+  color: #ffffff;
+}
+
+@media (max-width: 900px) {
+  .rips-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .rips-header__actions {
+    flex-wrap: wrap;
+  }
+
+  .rips-header__history-button,
+  .rips-header__generate-button {
+    flex: 1;
+    justify-content: center;
+  }
+}

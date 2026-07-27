@@ -1,0 +1,41 @@
+:host {
+  display: block;
+}
+
+.patient-profile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 28px 32px 48px;
+}
+
+.patient-profile__fab {
+  position: fixed;
+  right: 32px;
+  bottom: 32px;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background: #00236f;
+  box-shadow: 0 12px 32px rgba(0, 35, 111, 0.35);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .patient-profile {
+    padding: 20px 16px 80px;
+  }
+
+  .patient-profile__fab {
+    right: 16px;
+    bottom: 16px;
+  }
+}

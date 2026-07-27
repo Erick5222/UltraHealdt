@@ -1,0 +1,36 @@
+<footer class="billing-pagination">
+  <p class="billing-pagination__info">{{ label() }}</p>
+
+  <nav class="billing-pagination__nav" aria-label="Paginación de facturas">
+    <button
+      class="billing-pagination__button"
+      type="button"
+      aria-label="Página anterior"
+      [disabled]="currentPage() <= 1"
+      (click)="previous.emit()"
+    >
+      &lt;
+    </button>
+
+    @for (page of pageNumbers(); track page) {
+      <button
+        class="billing-pagination__page"
+        [class.billing-pagination__page--active]="isActive(page)"
+        type="button"
+        (click)="pageChange.emit(page)"
+      >
+        {{ page }}
+      </button>
+    }
+
+    <button
+      class="billing-pagination__button"
+      type="button"
+      aria-label="Página siguiente"
+      [disabled]="currentPage() >= totalPages()"
+      (click)="next.emit()"
+    >
+      &gt;
+    </button>
+  </nav>
+</footer>

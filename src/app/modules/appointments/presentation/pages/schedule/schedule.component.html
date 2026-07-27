@@ -1,0 +1,61 @@
+<section class="schedule">
+  <uh-schedule-header
+    [viewMode]="viewMode()"
+    (viewModeChange)="setViewMode($event)"
+    (newAppointment)="openModal()"
+  />
+
+  <uh-schedule-toolbar
+    [dateRangeLabel]="dateRangeLabel()"
+    [searchQuery]="searchQuery()"
+    [statusFilter]="statusFilter()"
+    [doctorFilter]="doctorFilter()"
+    [professionals]="professionals"
+    (previous)="goPrevious()"
+    (next)="goNext()"
+    (today)="goToday()"
+    (searchInput)="onSearchInput($event)"
+    (statusFilterChange)="setStatusFilter($event)"
+    (doctorFilterChange)="setDoctorFilter($event)"
+  />
+
+  @if (actionMessage()) {
+    <p class="schedule__feedback" role="status">{{ actionMessage() }}</p>
+  }
+
+  <div class="schedule__content">
+    <uh-schedule-grid
+      [viewMode]="viewMode()"
+      [visibleDays]="visibleDays()"
+      [appointments]="visibleAppointments()"
+      [monthCells]="monthCells()"
+      [selectedAppointmentId]="selectedAppointmentId()"
+      (appointmentSelect)="selectAppointment($event)"
+      (daySelect)="selectDay($event)"
+    />
+
+    @if (selectedAppointment(); as appointment) {
+      <uh-appointment-detail-panel
+        [appointment]="appointment"
+        (close)="clearSelection()"
+        (reschedule)="openEditModal(appointment)"
+        (cancelAppointment)="cancelSelectedAppointment(appointment)"
+      />
+    } @else {
+      <aside class="schedule__placeholder">
+        <p>Seleccione una cita del calendario o un día con citas agendadas.</p>
+      </aside>
+    }
+  </div>
+
+  @if (modalOpen()) {
+    <uh-appointment-modal
+      [editingAppointment]="editingAppointment()"
+      [defaultDateIso]="modalDefaultDate()"
+      [appointments]="appointments()"
+      (close)="closeModal()"
+      (save)="saveAppointment($event)"
+      (saveAndOpen)="saveAppointmentAndOpen($event)"
+    />
+  }
+</section>

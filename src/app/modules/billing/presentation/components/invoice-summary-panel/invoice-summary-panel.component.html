@@ -1,0 +1,32 @@
+<section class="invoice-summary-panel">
+  <dl class="invoice-summary-panel__lines">
+    <div class="invoice-summary-panel__line">
+      <dt>Subtotal</dt>
+      <dd>$ {{ summary().subtotal.toLocaleString('es-CO') }}</dd>
+    </div>
+    <div class="invoice-summary-panel__line invoice-summary-panel__line--discount">
+      <dt>Descuento aplicado</dt>
+      <dd>- $ {{ summary().discount.toLocaleString('es-CO') }}</dd>
+    </div>
+    <div class="invoice-summary-panel__line">
+      <dt>Base Gravable (19%)</dt>
+      <dd>$ {{ summary().taxableBase.toLocaleString('es-CO') }}</dd>
+    </div>
+    <div class="invoice-summary-panel__line">
+      <dt>IVA (19%)</dt>
+      <dd>$ {{ summary().iva.toLocaleString('es-CO') }}</dd>
+    </div>
+    <div class="invoice-summary-panel__line">
+      <dt>Exento de IVA</dt>
+      <dd>$ {{ summary().exempt.toLocaleString('es-CO') }}</dd>
+    </div>
+  </dl>
+
+  <footer class="invoice-summary-panel__total">
+    <div>
+      <p class="invoice-summary-panel__total-label">TOTAL A PAGAR</p>
+      <p class="invoice-summary-panel__total-currency">PESOS COLOMBIANOS</p>
+    </div>
+    <p class="invoice-summary-panel__total-value">$ {{ summary().total.toLocaleString('es-CO') }}</p>
+  </footer>
+</section>

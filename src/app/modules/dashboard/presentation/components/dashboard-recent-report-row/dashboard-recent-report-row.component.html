@@ -1,0 +1,17 @@
+<article
+  class="dashboard-recent-report-row"
+  [class.dashboard-recent-report-row--divider]="showDivider()"
+>
+  <div
+    class="dashboard-recent-report-row__icon-wrap"
+    [class.dashboard-recent-report-row__icon-wrap--danger]="iconTone() === 'danger'"
+    [class.dashboard-recent-report-row__icon-wrap--primary]="iconTone() === 'primary'"
+  >
+    <img class="dashboard-recent-report-row__icon" [src]="icon()" [alt]="" width="17" height="17" />
+  </div>
+
+  <div class="dashboard-recent-report-row__info">
+    <p class="dashboard-recent-report-row__title">{{ title() }}</p>
+    <p class="dashboard-recent-report-row__meta">{{ generatedAt() }}</p>
+  </div>
+</article>

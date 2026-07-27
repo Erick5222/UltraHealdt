@@ -1,0 +1,25 @@
+<section class="dashboard-upcoming-patients">
+  <header class="dashboard-upcoming-patients__header">
+    <div class="dashboard-upcoming-patients__heading">
+      <h2 class="dashboard-upcoming-patients__title">Próximos Pacientes</h2>
+      <p class="dashboard-upcoming-patients__subtitle">Lunes, 24 de Octubre</p>
+    </div>
+
+    <button class="dashboard-upcoming-patients__link" type="button">Ver todo</button>
+  </header>
+
+  <div class="dashboard-upcoming-patients__list">
+    @for (patient of patients; track patient.name; let i = $index) {
+      <uh-dashboard-upcoming-patient-row
+        [avatar]="patient.avatar"
+        [name]="patient.name"
+        [examType]="patient.examType"
+        [company]="patient.company"
+        [time]="patient.time"
+        [status]="patient.status"
+        [statusLabel]="patient.statusLabel"
+        [showDivider]="i < patients.length - 1"
+      />
+    }
+  </div>
+</section>

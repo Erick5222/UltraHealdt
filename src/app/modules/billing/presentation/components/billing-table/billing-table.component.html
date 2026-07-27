@@ -1,0 +1,47 @@
+<div class="billing-table__wrap">
+  <table class="billing-table">
+    <thead>
+      <tr>
+        <th>NÚMERO DE FACTURA</th>
+        <th>EMPRESA / PACIENTE</th>
+        <th>FECHA</th>
+        <th>VALOR</th>
+        <th>ESTADO DIAN</th>
+        <th>PROVEEDOR TECNOLÓGICO</th>
+        <th>ACCIONES</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (invoice of invoices(); track invoice.id) {
+        <tr>
+          <td>
+            <a class="billing-table__invoice-link" [routerLink]="['/billing/new']" [queryParams]="{ id: invoice.id }">
+              {{ invoice.number }}
+            </a>
+          </td>
+          <td>
+            <p class="billing-table__entity-name">{{ invoice.entityName }}</p>
+            <p class="billing-table__entity-id">{{ invoice.entityId }}</p>
+          </td>
+          <td>{{ invoice.dateLabel }}</td>
+          <td class="billing-table__amount">{{ invoice.amountLabel }}</td>
+          <td>
+            <uh-billing-status-badge [status]="invoice.dianStatus" [label]="invoice.dianStatusLabel" />
+          </td>
+          <td>{{ invoice.provider }}</td>
+          <td>
+            <uh-billing-actions
+              [showValidate]="invoice.showValidate"
+              [showCreditNote]="invoice.showCreditNote"
+              (action)="onAction(invoice, $event)"
+            />
+          </td>
+        </tr>
+      } @empty {
+        <tr>
+          <td class="billing-table__empty" colspan="7">No se encontraron facturas con los filtros aplicados.</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

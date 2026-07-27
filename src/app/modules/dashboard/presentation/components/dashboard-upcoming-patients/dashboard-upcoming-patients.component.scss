@@ -1,0 +1,53 @@
+:host {
+  display: block;
+}
+
+.dashboard-upcoming-patients {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding: 24px 28px 8px;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.dashboard-upcoming-patients__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.dashboard-upcoming-patients__title {
+  margin: 0 0 6px;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #111827;
+}
+
+.dashboard-upcoming-patients__subtitle {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #64748b;
+}
+
+.dashboard-upcoming-patients__link {
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1;
+  color: #0058be;
+  cursor: pointer;
+}
+
+.dashboard-upcoming-patients__list {
+  display: flex;
+  flex-direction: column;
+}

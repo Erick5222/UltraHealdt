@@ -1,0 +1,33 @@
+<header class="medical-history-header">
+  <div class="medical-history-header__info">
+    <div class="medical-history-header__eyebrow">
+      <span class="medical-history-header__code">HC-992834</span>
+      <span class="medical-history-header__label">Historial Clínico Consolidado</span>
+    </div>
+  </div>
+
+  <div class="medical-history-header__actions">
+    <a
+      class="medical-history-header__button medical-history-header__button--primary"
+      [routerLink]="newEntryRoute()"
+      [queryParams]="{ new: '1' }"
+    >
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.3"/>
+        <path d="M8 5V11M5 8H11" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+      </svg>
+      NUEVA ENTRADA
+    </a>
+    <button
+      class="medical-history-header__button medical-history-header__button--ghost"
+      type="button"
+      (click)="printSummary()"
+    >
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <rect x="3" y="2" width="10" height="12" rx="1.5" stroke="currentColor" stroke-width="1.3"/>
+        <path d="M5 5H11M5 8H11M5 11H8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+      </svg>
+      IMPRIMIR RESUMEN
+    </button>
+  </div>
+</header>

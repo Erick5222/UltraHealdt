@@ -1,0 +1,9 @@
+<span
+  class="rips-status-badge"
+  [class.rips-status-badge--validated]="status() === 'validated'"
+  [class.rips-status-badge--errors]="status() === 'errors'"
+  [class.rips-status-badge--validating]="status() === 'validating'"
+>
+  <span class="rips-status-badge__dot" aria-hidden="true"></span>
+  {{ label() }}
+</span>

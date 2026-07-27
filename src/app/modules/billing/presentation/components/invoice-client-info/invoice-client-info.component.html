@@ -1,0 +1,86 @@
+<section class="invoice-client-info">
+  <header class="invoice-client-info__header">
+    <h2 class="invoice-client-info__title">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+        <rect x="3" y="4" width="12" height="11" rx="1.5" stroke="currentColor" stroke-width="1.4"/>
+        <path d="M6 4V2.5H12V4" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+        <path d="M6.5 9H11.5M6.5 11.5H9.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+      Información del Cliente
+    </h2>
+    <span class="invoice-client-info__id">ID: {{ value().clientId }}</span>
+  </header>
+
+  <div class="invoice-client-info__grid">
+    <label class="invoice-client-info__field invoice-client-info__field--wide">
+      <span class="invoice-client-info__label">PACIENTE O EMPRESA</span>
+      <div class="invoice-client-info__search">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.3"/>
+          <path d="M10.5 10.5L13.5 13.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+        </svg>
+        <input
+          type="text"
+          [value]="value().clientName"
+          (input)="updateField('clientName', $event)"
+        />
+      </div>
+      <input
+        class="invoice-client-info__hint-input"
+        type="text"
+        [value]="value().clientHint"
+        placeholder="NIT o documento • Dirección"
+        (input)="updateField('clientHint', $event)"
+      />
+    </label>
+
+    <label class="invoice-client-info__field">
+      <span class="invoice-client-info__label">FECHA EMISIÓN</span>
+      <input
+        class="invoice-client-info__input"
+        type="date"
+        [value]="value().issueDate"
+        (input)="updateField('issueDate', $event)"
+      />
+    </label>
+
+    <label class="invoice-client-info__field">
+      <span class="invoice-client-info__label">VENCIMIENTO</span>
+      <input
+        class="invoice-client-info__input"
+        type="date"
+        [value]="value().dueDate"
+        (input)="updateField('dueDate', $event)"
+      />
+    </label>
+
+    <label class="invoice-client-info__field">
+      <span class="invoice-client-info__label">MÉTODO DE PAGO</span>
+      <select
+        class="invoice-client-info__select"
+        [value]="value().paymentMethod"
+        (change)="updateField('paymentMethod', $event)"
+      >
+        @for (method of paymentMethods; track method) {
+          <option [value]="method">{{ method }}</option>
+        }
+      </select>
+    </label>
+
+    <label class="invoice-client-info__field invoice-client-info__field--currency">
+      <span class="invoice-client-info__label">MONEDA</span>
+      <div class="invoice-client-info__currency-row">
+        <select
+          class="invoice-client-info__select"
+          [value]="value().currency"
+          (change)="updateField('currency', $event)"
+        >
+          @for (currency of currencies; track currency) {
+            <option [value]="currency">{{ currency }}</option>
+          }
+        </select>
+        <span class="invoice-client-info__trm">{{ value().trmLabel }}</span>
+      </div>
+    </label>
+  </div>
+</section>

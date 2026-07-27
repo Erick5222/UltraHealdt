@@ -1,0 +1,162 @@
+<div class="appointment-modal" role="dialog" aria-modal="true" aria-labelledby="appointment-modal-title">
+  <button class="appointment-modal__backdrop" type="button" aria-label="Cerrar modal" (click)="close.emit()"></button>
+
+  <div class="appointment-modal__dialog">
+    <header class="appointment-modal__header">
+      <div class="appointment-modal__title-wrap">
+        <span class="appointment-modal__title-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <rect x="3" y="4" width="14" height="13" rx="2" stroke="currentColor" stroke-width="1.3"/>
+            <path d="M3 8H17M7 2V5M13 2V5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+            <path d="M10 11V14M8.5 12.5H11.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <h2 class="appointment-modal__title" id="appointment-modal-title">{{ modalTitle() }}</h2>
+      </div>
+      <button class="appointment-modal__close" type="button" aria-label="Cerrar" (click)="close.emit()">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+          <path d="M5 5L13 13M13 5L5 13" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </header>
+
+    <div class="appointment-modal__body">
+      <div class="appointment-modal__form">
+        <section class="appointment-modal__section">
+          <label class="appointment-modal__label">Paciente</label>
+          <label class="appointment-modal__search">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M12.5 12.5L16 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <input
+              type="search"
+              placeholder="Buscar por nombre o documento..."
+              [value]="patientSearch()"
+              (input)="onPatientSearchInput($event)"
+            />
+          </label>
+
+          @if (patientSearch()) {
+            <div class="appointment-modal__patient-results">
+              @for (patient of filteredPatients(); track patient.id) {
+                <button class="appointment-modal__patient-option" type="button" (click)="selectPatient(patient)">
+                  <img [src]="patient.avatar" alt="" width="32" height="32" />
+                  <span>
+                    <strong>{{ patient.name }}</strong>
+                    <small>CC {{ patient.document }} • {{ patient.company }}</small>
+                  </span>
+                </button>
+              }
+            </div>
+          }
+
+          <article class="appointment-modal__patient-card">
+            <img [src]="selectedPatient().avatar" alt="" width="40" height="40" />
+            <div>
+              <strong>{{ selectedPatient().name }}</strong>
+              <span>CC {{ selectedPatient().document }} • {{ selectedPatient().company }}</span>
+            </div>
+          </article>
+        </section>
+
+        <div class="appointment-modal__row">
+          <label class="appointment-modal__field">
+            <span>Profesional</span>
+            <select [value]="doctorName()" (change)="onDoctorChange($event)">
+              @for (professional of professionals; track professional) {
+                <option [value]="professional">{{ professional }}</option>
+              }
+            </select>
+          </label>
+          <label class="appointment-modal__field">
+            <span>Tipo de Cita</span>
+            <select [value]="examType()" (change)="onExamTypeChange($event)">
+              @for (type of examTypes; track type) {
+                <option [value]="type">{{ type }}</option>
+              }
+            </select>
+          </label>
+        </div>
+
+        <div class="appointment-modal__row appointment-modal__row--triple">
+          <label class="appointment-modal__field">
+            <span>Fecha</span>
+            <input type="date" [value]="dateIso()" (change)="onDateChange($event)" />
+          </label>
+          <label class="appointment-modal__field">
+            <span>Hora Inicio</span>
+            <input type="time" [value]="startTime()" (change)="onTimeChange($event)" />
+          </label>
+          <label class="appointment-modal__field">
+            <span>Duración</span>
+            <select [value]="durationMinutes()" (change)="onDurationChange($event)">
+              @for (duration of durations; track duration) {
+                <option [value]="duration">{{ duration }} min</option>
+              }
+            </select>
+          </label>
+        </div>
+
+        <label class="appointment-modal__field appointment-modal__field--full">
+          <span>Observaciones</span>
+          <textarea
+            rows="4"
+            placeholder="Notas adicionales..."
+            [value]="observations()"
+            (input)="onObservationsInput($event)"
+          ></textarea>
+        </label>
+      </div>
+
+      <aside class="appointment-modal__availability">
+        <h3 class="appointment-modal__availability-title">Disponibilidad</h3>
+        <div class="appointment-modal__slots">
+          @for (slot of timeSlots; track slot) {
+            <button
+              class="appointment-modal__slot"
+              [class.appointment-modal__slot--selected]="isSlotSelected(slot)"
+              [class.appointment-modal__slot--disabled]="isSlotDisabled(slot)"
+              type="button"
+              [disabled]="isSlotDisabled(slot)"
+              (click)="selectTimeSlot(slot)"
+            >
+              {{ slot }}
+            </button>
+          }
+        </div>
+        @if (hasConflict()) {
+          <p class="appointment-modal__warning">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M8 2L14 13H2L8 2Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+              <path d="M8 6V9M8 11H8.01" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+            El profesional ya posee una cita en ese horario.
+          </p>
+        }
+      </aside>
+    </div>
+
+    <footer class="appointment-modal__footer">
+      <button class="appointment-modal__footer-button appointment-modal__footer-button--text" type="button" (click)="close.emit()">
+        Cancelar
+      </button>
+      <button
+        class="appointment-modal__footer-button appointment-modal__footer-button--outline"
+        type="button"
+        [disabled]="!canSave()"
+        (click)="submitSave()"
+      >
+        Guardar cita
+      </button>
+      <button
+        class="appointment-modal__footer-button appointment-modal__footer-button--primary"
+        type="button"
+        [disabled]="!canSave()"
+        (click)="submitSaveAndOpen()"
+      >
+        Guardar y abrir atención
+      </button>
+    </footer>
+  </div>
+</div>

@@ -1,0 +1,97 @@
+:host {
+  display: block;
+}
+
+.dashboard-ia-insight {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 280px;
+  padding: 24px 28px;
+  border-radius: 16px;
+  background: #00236f;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+.dashboard-ia-insight__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.dashboard-ia-insight__icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
+
+.dashboard-ia-insight__label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  color: #8eb8ff;
+  text-transform: uppercase;
+}
+
+.dashboard-ia-insight__content {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+}
+
+.dashboard-ia-insight__title {
+  margin: 0 0 12px;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #ffffff;
+}
+
+.dashboard-ia-insight__description {
+  margin: 0;
+  max-width: 320px;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.88);
+
+  strong {
+    font-weight: 700;
+    color: #ffffff;
+  }
+}
+
+.dashboard-ia-insight__button {
+  position: relative;
+  z-index: 1;
+  align-self: flex-start;
+  margin-top: 24px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 12px;
+  background: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1;
+  color: #00236f;
+  cursor: pointer;
+  transition: background 0.2s ease;
+
+  &:hover {
+    background: #f3f6fb;
+  }
+}
+
+.dashboard-ia-insight__decoration {
+  position: absolute;
+  right: 16px;
+  bottom: 8px;
+  z-index: 0;
+  width: 87px;
+  height: 94px;
+  opacity: 0.18;
+  pointer-events: none;
+}

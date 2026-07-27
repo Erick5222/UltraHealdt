@@ -1,0 +1,36 @@
+<div class="company-actions-menu">
+  <button
+    class="company-actions-menu__trigger"
+    type="button"
+    aria-label="Más opciones"
+    [attr.aria-expanded]="isOpen()"
+    (click)="toggle($event)"
+  >
+    <img src="/images/icons/Empresas/Button.svg" alt="" width="20" height="38" />
+  </button>
+
+  @if (isOpen()) {
+    <div
+      class="company-actions-menu__dropdown"
+      [class.company-actions-menu__dropdown--top]="placement() === 'top'"
+      role="menu"
+      (click)="onMenuClick($event)"
+    >
+      <a class="company-actions-menu__item" role="menuitem" [routerLink]="editRoute()">
+        Editar empresa
+      </a>
+      <a class="company-actions-menu__item" role="menuitem" [routerLink]="editRoute()">
+        Ver expediente
+      </a>
+      <a class="company-actions-menu__item" role="menuitem" routerLink="/patients">
+        Ver empleados
+      </a>
+      <button class="company-actions-menu__item" type="button" role="menuitem">
+        {{ statusActionLabel() }}
+      </button>
+      <button class="company-actions-menu__item" type="button" role="menuitem">
+        Contactar
+      </button>
+    </div>
+  }
+</div>

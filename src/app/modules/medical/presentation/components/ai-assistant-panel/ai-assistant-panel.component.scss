@@ -1,0 +1,129 @@
+:host {
+  display: block;
+}
+
+.ai-assistant-panel {
+  padding: 20px;
+  border: 1px solid #eef1f6;
+  border-radius: 16px;
+  background: #f8fafc;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+}
+
+.ai-assistant-panel__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.ai-assistant-panel__icon {
+  flex-shrink: 0;
+}
+
+.ai-assistant-panel__label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #00236f;
+}
+
+.ai-assistant-panel__subtitle {
+  display: block;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  line-height: 1.2;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.ai-assistant-panel__section + .ai-assistant-panel__section {
+  margin-top: 18px;
+}
+
+.ai-assistant-panel__section-title {
+  margin: 0 0 10px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  color: #475569;
+  text-transform: uppercase;
+}
+
+.ai-assistant-panel__text {
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.65;
+  color: #64748b;
+}
+
+.ai-assistant-panel__alerts {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ai-assistant-panel__alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.5;
+
+  svg {
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+}
+
+.ai-assistant-panel__alert--warning {
+  border: 1px solid #fed7aa;
+  background: #fff7ed;
+  color: #c2410c;
+}
+
+.ai-assistant-panel__alert--info {
+  border: 1px solid #bfdbfe;
+  background: #eff6ff;
+  color: #0058be;
+}
+
+.ai-assistant-panel__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ai-assistant-panel__action {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #ffffff;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: #0058be;
+  text-align: left;
+  cursor: pointer;
+
+  svg {
+    flex-shrink: 0;
+    color: #0058be;
+  }
+}

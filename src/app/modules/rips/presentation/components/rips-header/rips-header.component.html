@@ -1,0 +1,30 @@
+<header class="rips-header">
+  <div class="rips-header__intro">
+    <p class="rips-header__eyebrow">
+      <span class="rips-header__eyebrow-line" aria-hidden="true"></span>
+      <span>NORMATIVIDAD &amp; CUMPLIMIENTO</span>
+    </p>
+    <h1 class="rips-header__title">RIPS</h1>
+    <p class="rips-header__subtitle">
+      Genera, valida y administra los registros requeridos para reporte sanitario bajo estándares
+      ministeriales vigentes.
+    </p>
+  </div>
+
+  <div class="rips-header__actions">
+    <button class="rips-header__history-button" type="button" (click)="consultHistory.emit()">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.3"/>
+        <path d="M8 4.5V8L10.2 9.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+      </svg>
+      Consultar Historial
+    </button>
+    <button class="rips-header__generate-button" type="button" (click)="generateRips.emit()">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.3"/>
+        <path d="M8 5V11M5 8H11" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+      </svg>
+      Generar RIPS
+    </button>
+  </div>
+</header>

@@ -1,0 +1,39 @@
+<section class="rips">
+  <uh-rips-header
+    (consultHistory)="onConsultHistory()"
+    (generateRips)="onGenerateRips()"
+  />
+
+  @if (actionMessage()) {
+    <p class="rips__feedback" role="status">{{ actionMessage() }}</p>
+  }
+
+  <uh-rips-summary
+    [stats]="summaryStats()"
+    (attendNow)="onAttendNow()"
+    (validateInfo)="onValidateInfo()"
+    (exportFile)="onExportFile()"
+  />
+
+  <div class="rips__content">
+    <uh-rips-processes-table
+      [processes]="visibleProcesses()"
+      [showAll]="showAllProcesses()"
+      (processAction)="onProcessAction($event)"
+      (toggleViewAll)="onToggleViewAll()"
+    />
+
+    <div
+      #validationPanel
+      class="rips__validation-wrap"
+      [class.rips__validation-wrap--highlight]="highlightValidation()"
+    >
+      <uh-rips-validation-panel
+        [issues]="validationIssues()"
+        [criticalCount]="criticalCount()"
+        (correctIssue)="onCorrectIssue($event)"
+        (revalidateAll)="onRevalidateAll()"
+      />
+    </div>
+  </div>
+</section>

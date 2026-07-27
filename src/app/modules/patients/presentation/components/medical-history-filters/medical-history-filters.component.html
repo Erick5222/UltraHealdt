@@ -1,0 +1,167 @@
+<section class="medical-history-filters">
+  <div class="medical-history-filters__group">
+    <button
+      class="medical-history-filters__item"
+      [class.medical-history-filters__item--active]="isDateActive() || openPanel() === 'date'"
+      type="button"
+      [attr.aria-expanded]="openPanel() === 'date'"
+      (click)="togglePanel('date', $event)"
+    >
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <rect x="2" y="3" width="12" height="11" rx="2" stroke="currentColor" stroke-width="1.2"/>
+        <path d="M2 7H14M5 1V4M11 1V4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+      Rango de fechas
+    </button>
+
+    @if (openPanel() === 'date') {
+      <div class="medical-history-filters__panel" (click)="onPanelClick($event)">
+        <p class="medical-history-filters__panel-title">Rango de fechas</p>
+        <div class="medical-history-filters__dates">
+          <label class="medical-history-filters__field">
+            <span>Desde</span>
+            <input type="date" [value]="filters().dateFrom" (change)="onDateFromChange($event)" />
+          </label>
+          <label class="medical-history-filters__field">
+            <span>Hasta</span>
+            <input type="date" [value]="filters().dateTo" (change)="onDateToChange($event)" />
+          </label>
+        </div>
+      </div>
+    }
+  </div>
+
+  <div class="medical-history-filters__group">
+    <button
+      class="medical-history-filters__item"
+      [class.medical-history-filters__item--active]="isExamActive() || openPanel() === 'exam'"
+      type="button"
+      [attr.aria-expanded]="openPanel() === 'exam'"
+      (click)="togglePanel('exam', $event)"
+    >
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M4 2H10L12 4V13C12 13.5523 11.5523 14 11 14H5C4.44772 14 4 13.5523 4 13V2Z" stroke="currentColor" stroke-width="1.2"/>
+        <path d="M6 6H10M6 9H10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+      Tipo de Examen
+    </button>
+
+    @if (openPanel() === 'exam') {
+      <div class="medical-history-filters__panel" (click)="onPanelClick($event)">
+        <p class="medical-history-filters__panel-title">Tipo de Examen</p>
+        <label class="medical-history-filters__field">
+          <span>Seleccionar</span>
+          <select [value]="filters().examType" (change)="onExamTypeChange($event)">
+            <option value="">Todos los exámenes</option>
+            @for (examType of examTypes; track examType) {
+              <option [value]="examType">{{ examType }}</option>
+            }
+          </select>
+        </label>
+      </div>
+    }
+  </div>
+
+  <div class="medical-history-filters__group">
+    <button
+      class="medical-history-filters__item"
+      [class.medical-history-filters__item--active]="isDoctorActive() || openPanel() === 'doctor'"
+      type="button"
+      [attr.aria-expanded]="openPanel() === 'doctor'"
+      (click)="togglePanel('doctor', $event)"
+    >
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <rect x="2" y="4" width="12" height="10" rx="2" stroke="currentColor" stroke-width="1.2"/>
+        <path d="M8 7V10M6.5 8.5H9.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+      Médico Tratante
+    </button>
+
+    @if (openPanel() === 'doctor') {
+      <div class="medical-history-filters__panel" (click)="onPanelClick($event)">
+        <p class="medical-history-filters__panel-title">Médico Tratante</p>
+        <label class="medical-history-filters__field">
+          <span>Seleccionar</span>
+          <select [value]="filters().doctor" (change)="onDoctorChange($event)">
+            <option value="">Todos los médicos</option>
+            @for (doctor of doctors; track doctor) {
+              <option [value]="doctor">{{ doctor }}</option>
+            }
+          </select>
+        </label>
+      </div>
+    }
+  </div>
+
+  <div class="medical-history-filters__group medical-history-filters__group--advanced">
+    <button
+      class="medical-history-filters__advanced"
+      [class.medical-history-filters__advanced--active]="hasActiveFilters() || openPanel() === 'advanced'"
+      type="button"
+      aria-label="Filtros avanzados"
+      [attr.aria-expanded]="openPanel() === 'advanced'"
+      (click)="togglePanel('advanced', $event)"
+    >
+      <img src="/images/icons/Empresas/filtros.svg" alt="" width="18" height="12" />
+    </button>
+
+    @if (openPanel() === 'advanced') {
+      <div class="medical-history-filters__panel medical-history-filters__panel--advanced" (click)="onPanelClick($event)">
+        <p class="medical-history-filters__panel-title">Filtros avanzados</p>
+
+        <div class="medical-history-filters__dates">
+          <label class="medical-history-filters__field">
+            <span>Desde</span>
+            <input type="date" [value]="filters().dateFrom" (change)="onDateFromChange($event)" />
+          </label>
+          <label class="medical-history-filters__field">
+            <span>Hasta</span>
+            <input type="date" [value]="filters().dateTo" (change)="onDateToChange($event)" />
+          </label>
+        </div>
+
+        <label class="medical-history-filters__field">
+          <span>Tipo de Examen</span>
+          <select [value]="filters().examType" (change)="onExamTypeChange($event)">
+            <option value="">Todos los exámenes</option>
+            @for (examType of examTypes; track examType) {
+              <option [value]="examType">{{ examType }}</option>
+            }
+          </select>
+        </label>
+
+        <label class="medical-history-filters__field">
+          <span>Médico Tratante</span>
+          <select [value]="filters().doctor" (change)="onDoctorChange($event)">
+            <option value="">Todos los médicos</option>
+            @for (doctor of doctors; track doctor) {
+              <option [value]="doctor">{{ doctor }}</option>
+            }
+          </select>
+        </label>
+
+        <label class="medical-history-filters__field">
+          <span>Estado del registro</span>
+          <select [value]="filters().status" (change)="onStatusChange($event)">
+            <option value="">Todos</option>
+            <option value="validated">Validado</option>
+            <option value="archived">Archivado</option>
+          </select>
+        </label>
+
+        <label class="medical-history-filters__field">
+          <span>Aptitud</span>
+          <select [value]="filters().aptitude" (change)="onAptitudeChange($event)">
+            <option value="">Todas</option>
+            <option value="fit">Apto</option>
+            <option value="restricted">Apto con restricciones</option>
+          </select>
+        </label>
+
+        <button class="medical-history-filters__clear" type="button" (click)="clearFilters()">
+          Limpiar filtros
+        </button>
+      </div>
+    }
+  </div>
+</section>

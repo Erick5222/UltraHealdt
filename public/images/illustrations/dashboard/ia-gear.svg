@@ -1,0 +1,17 @@
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path
+    d="M60 20C60 20 72 28 72 40C72 52 60 56 60 68C60 80 72 84 72 96C72 96 60 104 60 104C60 104 48 96 48 84C48 72 60 68 60 56C60 44 48 40 48 28C48 28 60 20 60 20Z"
+    stroke="white"
+    stroke-width="3"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <circle cx="60" cy="60" r="28" stroke="white" stroke-width="3" />
+  <circle cx="60" cy="60" r="10" fill="white" />
+  <path
+    d="M60 32V44M60 76V88M32 60H44M76 60H88M40.4 40.4L48.8 48.8M71.2 71.2L79.6 79.6M79.6 40.4L71.2 48.8M48.8 71.2L40.4 79.6"
+    stroke="white"
+    stroke-width="3"
+    stroke-linecap="round"
+  />
+</svg>

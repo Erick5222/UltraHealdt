@@ -4,8 +4,15 @@
   box-sizing: border-box;
 }
 
+:root {
+  --uh-font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
 html,
 body {
   height: 100%;
   margin: 0;
+  font-family: var(--uh-font-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

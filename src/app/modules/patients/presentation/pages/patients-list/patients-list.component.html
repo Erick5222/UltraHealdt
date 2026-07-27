@@ -1,0 +1,229 @@
+<section class="patients-list">
+  <header class="patients-list__header">
+    <div class="patients-list__intro">
+      <p class="patients-list__eyebrow">
+        <img
+          class="patients-list__eyebrow-icon"
+          src="/images/icons/Dashboard/ActivePatients.svg"
+          alt=""
+          width="24"
+          height="12"
+        />
+        <span>DIRECTORIO MÉDICO</span>
+      </p>
+      <h1 class="patients-list__title">Pacientes</h1>
+    </div>
+
+    <a class="patients-list__new-button" routerLink="/patients/new">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <circle cx="8" cy="5" r="2.5" stroke="currentColor" stroke-width="1.3"/>
+        <path d="M3.5 14C4.2 11.5 5.9 10 8 10C10.1 10 11.8 11.5 12.5 14" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+        <path d="M12 4H14M13 3V5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+      </svg>
+      <span>+ NUEVO PACIENTE</span>
+    </a>
+  </header>
+
+  <section class="patients-list__toolbar">
+    <label class="patients-list__search">
+      <svg class="patients-list__search-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+        <circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.5" />
+        <path d="M12.5 12.5L16 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+      </svg>
+      <input
+        class="patients-list__search-input"
+        type="search"
+        placeholder="Documento, Nombre, Empresa, Teléfono..."
+        [value]="searchQuery()"
+        (input)="onSearchInput($event)"
+      />
+    </label>
+
+    <div class="patients-list__status-tabs" role="tablist" aria-label="Estado de pacientes">
+      <button
+        class="patients-list__status-tab"
+        [class.patients-list__status-tab--active]="isStatusFilterActive('all')"
+        type="button"
+        (click)="setStatusFilter('all')"
+      >
+        TODOS
+      </button>
+      <button
+        class="patients-list__status-tab"
+        [class.patients-list__status-tab--active]="isStatusFilterActive('active')"
+        type="button"
+        (click)="setStatusFilter('active')"
+      >
+        ACTIVOS
+      </button>
+      <button
+        class="patients-list__status-tab"
+        [class.patients-list__status-tab--active]="isStatusFilterActive('inactive')"
+        type="button"
+        (click)="setStatusFilter('inactive')"
+      >
+        INACTIVOS
+      </button>
+    </div>
+
+    <div class="patients-list__filters">
+      <button
+        class="patients-list__filters-button"
+        [class.patients-list__filters-button--active]="hasActiveFilters() || filtersOpen()"
+        type="button"
+        aria-label="Filtros"
+        [attr.aria-expanded]="filtersOpen()"
+        (click)="toggleFilters($event)"
+      >
+        <img src="/images/icons/Empresas/filtros.svg" alt="" width="18" height="12" />
+      </button>
+
+      @if (filtersOpen()) {
+        <div class="patients-list__filters-panel" (click)="onFiltersPanelClick($event)">
+          <p class="patients-list__filters-title">Filtros</p>
+
+          <label class="patients-list__filters-field">
+            <span>Empresa</span>
+            <select [value]="companyFilter()" (change)="onCompanyFilterChange($event)">
+              <option value="">Todas las empresas</option>
+              @for (company of filterCompanies; track company) {
+                <option [value]="company">{{ company }}</option>
+              }
+            </select>
+          </label>
+
+          <div class="patients-list__filters-dates">
+            <label class="patients-list__filters-field">
+              <span>Desde</span>
+              <input type="date" [value]="dateFrom()" (change)="onDateFromChange($event)" />
+            </label>
+            <label class="patients-list__filters-field">
+              <span>Hasta</span>
+              <input type="date" [value]="dateTo()" (change)="onDateToChange($event)" />
+            </label>
+          </div>
+
+          <button class="patients-list__filters-clear" type="button" (click)="clearFilters()">
+            Limpiar filtros
+          </button>
+        </div>
+      }
+    </div>
+  </section>
+
+  <section class="patients-list__table-wrap">
+    <table class="patients-list__table">
+      <thead>
+        <tr>
+          <th>TIPO DOC.</th>
+          <th>DOCUMENTO</th>
+          <th>NOMBRE COMPLETO</th>
+          <th>EMPRESA</th>
+          <th>CARGO</th>
+          <th>ESTADO</th>
+          <th>ÚLTIM. ATENC.</th>
+          <th>ACCIONES</th>
+        </tr>
+      </thead>
+      <tbody>
+        @if (visiblePatients().length === 0) {
+          <tr>
+            <td class="patients-list__empty" colspan="8">
+              No se encontraron pacientes con los criterios seleccionados.
+            </td>
+          </tr>
+        } @else {
+          @for (patient of visiblePatients(); track patient.id; let i = $index) {
+            <tr>
+              <td>{{ patient.documentType }}</td>
+              <td>{{ patient.document }}</td>
+              <td>
+                <div class="patients-list__name-cell">
+                  <span
+                    class="patients-list__avatar"
+                    [class.patients-list__avatar--primary]="patient.avatarTone === 'primary'"
+                    [class.patients-list__avatar--secondary]="patient.avatarTone === 'secondary'"
+                    [class.patients-list__avatar--tertiary]="patient.avatarTone === 'tertiary'"
+                    [class.patients-list__avatar--quaternary]="patient.avatarTone === 'quaternary'"
+                  >
+                    {{ patient.avatarInitial }}
+                  </span>
+                  <span class="patients-list__name">{{ patient.name }}</span>
+                </div>
+              </td>
+              <td>{{ patient.company }}</td>
+              <td>{{ patient.role }}</td>
+              <td>
+                <span
+                  class="patients-list__status"
+                  [class.patients-list__status--active]="patient.status === 'active'"
+                  [class.patients-list__status--inactive]="patient.status === 'inactive'"
+                >
+                  {{ statusLabel(patient.status) }}
+                </span>
+              </td>
+              <td>{{ patient.lastVisit }}</td>
+              <td>
+                <div class="patients-list__table-actions">
+                  <uh-patient-actions-menu
+                    [patientId]="patient.id"
+                    [placement]="actionsPlacement(i)"
+                  />
+                </div>
+              </td>
+            </tr>
+          }
+        }
+      </tbody>
+    </table>
+
+    <img
+      class="patients-list__watermark"
+      src="/images/illustrations/patients/medical-kit-watermark.svg"
+      alt=""
+      width="160"
+      height="160"
+    />
+
+    <footer class="patients-list__pagination">
+      <p class="patients-list__pagination-info">
+        @if (totalPatients() === 0) {
+          Mostrando 0 de 0 pacientes
+        } @else {
+          Mostrando {{ rangeStart() }} - {{ rangeEnd() }} de
+          {{ totalPatients() | number: '1.0-0' }} pacientes
+        }
+      </p>
+      <nav class="patients-list__pagination-nav" aria-label="Paginación">
+        <button
+          class="patients-list__pagination-button"
+          type="button"
+          aria-label="Página anterior"
+          [disabled]="!canGoPrevious()"
+          (click)="goToPreviousPage()"
+        >
+          &lt;
+        </button>
+        @for (page of visiblePageNumbers(); track page) {
+          <button
+            class="patients-list__pagination-page"
+            [class.patients-list__pagination-page--active]="page === currentPage()"
+            type="button"
+            (click)="goToPage(page)"
+          >
+            {{ page }}
+          </button>
+        }
+        <button
+          class="patients-list__pagination-button"
+          type="button"
+          aria-label="Página siguiente"
+          [disabled]="!canGoNext()"
+          (click)="goToNextPage()"
+        >
+          &gt;
+        </button>
+      </nav>
+    </footer>
+  </section>
+</section>

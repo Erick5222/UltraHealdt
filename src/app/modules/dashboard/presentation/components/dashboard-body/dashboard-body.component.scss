@@ -1,0 +1,22 @@
+:host {
+  display: block;
+}
+
+.dashboard-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(320px, 1fr);
+  gap: 20px;
+  align-items: stretch;
+}
+
+.dashboard-body__sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+@media (max-width: 1100px) {
+  .dashboard-body {
+    grid-template-columns: 1fr;
+  }
+}

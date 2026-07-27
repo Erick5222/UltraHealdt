@@ -1,0 +1,46 @@
+.rips-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.rips-status-badge__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+.rips-status-badge--validated {
+  background: #e8f7ee;
+  color: #15803d;
+
+  .rips-status-badge__dot {
+    background: #15803d;
+  }
+}
+
+.rips-status-badge--errors {
+  background: #fdecec;
+  color: #dc2626;
+
+  .rips-status-badge__dot {
+    background: #dc2626;
+  }
+}
+
+.rips-status-badge--validating {
+  background: #eef4ff;
+  color: #0058be;
+
+  .rips-status-badge__dot {
+    background: #0058be;
+  }
+}

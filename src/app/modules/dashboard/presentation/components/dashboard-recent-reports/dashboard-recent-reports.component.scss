@@ -1,0 +1,25 @@
+:host {
+  display: block;
+}
+
+.dashboard-recent-reports {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 28px;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.dashboard-recent-reports__title {
+  margin: 0 0 8px;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #111827;
+}
+
+.dashboard-recent-reports__list {
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,17 @@
+<article
+  class="appointment-card"
+  [class.appointment-card--confirmed]="variant() === 'confirmed'"
+  [class.appointment-card--in-progress]="variant() === 'in-progress'"
+  [class.appointment-card--cancelled]="variant() === 'cancelled'"
+  [class.appointment-card--pending]="variant() === 'pending'"
+  [class.appointment-card--compact]="displayMode() === 'compact'"
+  [class.appointment-card--medium]="displayMode() === 'medium'"
+  [class.appointment-card--full]="displayMode() === 'full'"
+  [class.appointment-card--selected]="selected()"
+  (click)="onSelect($event)"
+  (keydown.enter)="onSelect($event)"
+  tabindex="0"
+  role="button"
+>
+  <ng-content />
+</article>

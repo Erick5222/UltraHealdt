@@ -1,0 +1,64 @@
+.billing-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.billing-status-badge__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+.billing-status-badge--approved {
+  background: #e8f7ee;
+  color: #15803d;
+
+  .billing-status-badge__dot {
+    background: #15803d;
+  }
+}
+
+.billing-status-badge--pending {
+  background: #fff4e5;
+  color: #c56a2d;
+
+  .billing-status-badge__dot {
+    background: #ea580c;
+  }
+}
+
+.billing-status-badge--sent {
+  background: #eef4ff;
+  color: #0058be;
+
+  .billing-status-badge__dot {
+    background: #0058be;
+  }
+}
+
+.billing-status-badge--rejected {
+  background: #fdecec;
+  color: #dc2626;
+
+  .billing-status-badge__dot {
+    background: #dc2626;
+  }
+}
+
+.billing-status-badge--cancelled {
+  background: #f1f5f9;
+  color: #64748b;
+
+  .billing-status-badge__dot {
+    background: #94a3b8;
+  }
+}

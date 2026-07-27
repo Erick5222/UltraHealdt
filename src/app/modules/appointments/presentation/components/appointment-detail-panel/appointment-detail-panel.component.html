@@ -1,0 +1,75 @@
+<aside class="appointment-detail-panel">
+  <header class="appointment-detail-panel__header">
+    <h2 class="appointment-detail-panel__title">Detalles de la Cita</h2>
+    <button class="appointment-detail-panel__close" type="button" aria-label="Cerrar panel" (click)="close.emit()">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+        <path d="M5 5L13 13M13 5L5 13" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </header>
+
+  <div class="appointment-detail-panel__patient">
+    <div class="appointment-detail-panel__avatar-wrap">
+      <img
+        class="appointment-detail-panel__avatar"
+        [src]="appointment().patientAvatar"
+        alt=""
+        width="72"
+        height="72"
+      />
+      <span class="appointment-detail-panel__avatar-badge" aria-hidden="true">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <circle cx="7" cy="7" r="7" fill="#0058BE"/>
+          <path d="M4 7L6 9L10 5" stroke="white" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+    </div>
+    <h3 class="appointment-detail-panel__name">{{ appointment().patientName }}</h3>
+    <p class="appointment-detail-panel__meta">ID: {{ appointment().patientDocument }} • {{ appointment().patientAge }} años</p>
+  </div>
+
+  <dl class="appointment-detail-panel__details">
+    <div class="appointment-detail-panel__detail">
+      <dt>Empresa</dt>
+      <dd>{{ appointment().company }}</dd>
+    </div>
+    <div class="appointment-detail-panel__detail">
+      <dt>Hora</dt>
+      <dd>{{ appointment().timeLabel }}</dd>
+    </div>
+    <div class="appointment-detail-panel__detail">
+      <dt>Estado</dt>
+      <dd class="appointment-detail-panel__status">{{ appointment().statusLabel }}</dd>
+    </div>
+    <div class="appointment-detail-panel__detail">
+      <dt>Profesional</dt>
+      <dd class="appointment-detail-panel__professional">
+        <span class="appointment-detail-panel__professional-avatar">{{ appointment().doctorInitials }}</span>
+        {{ appointment().doctorName }}
+      </dd>
+    </div>
+  </dl>
+
+  <footer class="appointment-detail-panel__actions">
+    <a class="appointment-detail-panel__button appointment-detail-panel__button--primary" [routerLink]="historyRoute()">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M4 2H10L12 4V13C12 13.5523 11.5523 14 11 14H5C4.44772 14 4 13.5523 4 13V2Z" stroke="currentColor" stroke-width="1.2"/>
+        <path d="M6 6H10M6 9H10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+      Ver Historia Clínica
+    </a>
+    <div class="appointment-detail-panel__secondary-actions">
+      <button class="appointment-detail-panel__button appointment-detail-panel__button--ghost" type="button" (click)="reschedule.emit()">
+        Reprogramar
+      </button>
+      <button
+        class="appointment-detail-panel__button appointment-detail-panel__button--danger"
+        type="button"
+        [disabled]="!canCancel()"
+        (click)="cancelAppointment.emit()"
+      >
+        Cancelar
+      </button>
+    </div>
+  </footer>
+</aside>

@@ -1,0 +1,40 @@
+<section class="invoice-form">
+  <uh-invoice-form-header
+    [editMode]="editMode()"
+    [invoiceNumber]="form().number"
+    (save)="saveInvoice()"
+  />
+
+  @if (actionMessage()) {
+    <p class="invoice-form__feedback" role="status">{{ actionMessage() }}</p>
+  }
+
+  <div class="invoice-form__layout">
+    <div class="invoice-form__main">
+      <uh-invoice-client-info
+        [value]="clientInfo()"
+        (valueChange)="updateClientInfo($event)"
+      />
+      <uh-invoice-items-table
+        [items]="form().items"
+        (itemsChange)="updateItems($event)"
+        (loadFromAgenda)="onLoadFromAgenda()"
+        (importExcel)="onImportExcel()"
+      />
+    </div>
+
+    <aside class="invoice-form__sidebar">
+      <uh-invoice-summary-panel [summary]="summary()" />
+      <uh-invoice-electronic-panel
+        [autoDianValidation]="form().autoDianValidation"
+        [provider]="form().provider"
+        (autoDianValidationChange)="updateAutoDianValidation($event)"
+        (verifyResolution)="onVerifyResolution()"
+      />
+      <uh-invoice-notes-panel
+        [notes]="form().notes"
+        (notesChange)="updateNotes($event)"
+      />
+    </aside>
+  </div>
+</section>

@@ -1,0 +1,41 @@
+<header class="schedule-header">
+  <div class="schedule-header__intro">
+    <h1 class="schedule-header__title">Agenda</h1>
+    <p class="schedule-header__subtitle">Administra las citas y actividades programadas.</p>
+  </div>
+
+  <div class="schedule-header__actions">
+    <div class="schedule-header__view-toggle" role="group" aria-label="Vista de agenda">
+      <button
+        class="schedule-header__view-button"
+        [class.schedule-header__view-button--active]="isViewActive('day')"
+        type="button"
+        (click)="setViewMode('day')"
+      >
+        Día
+      </button>
+      <button
+        class="schedule-header__view-button"
+        [class.schedule-header__view-button--active]="isViewActive('week')"
+        type="button"
+        (click)="setViewMode('week')"
+      >
+        Semana
+      </button>
+      <button
+        class="schedule-header__view-button"
+        [class.schedule-header__view-button--active]="isViewActive('month')"
+        type="button"
+        (click)="setViewMode('month')"
+      >
+        Mes
+      </button>
+    </div>
+    <button class="schedule-header__new-button" type="button" (click)="newAppointment.emit()">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M8 3V13M3 8H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      Nueva cita
+    </button>
+  </div>
+</header>

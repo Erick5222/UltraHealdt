@@ -1,0 +1,24 @@
+.billing-actions {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+}
+
+.billing-actions__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: #0058be;
+  cursor: pointer;
+
+  &:hover {
+    background: #eff6ff;
+  }
+}

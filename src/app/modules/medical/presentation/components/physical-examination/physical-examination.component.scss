@@ -1,0 +1,48 @@
+:host {
+  display: block;
+}
+
+.physical-examination__title {
+  margin: 0 0 16px;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #00236f;
+}
+
+.physical-examination__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.physical-examination__card {
+  padding: 20px;
+  border: 1px solid #dbeafe;
+  border-radius: 14px;
+  background: #f0f7ff;
+}
+
+.physical-examination__card-title {
+  margin: 0 0 10px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  color: #0058be;
+  text-transform: uppercase;
+}
+
+.physical-examination__card-text {
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #475569;
+}
+
+@media (max-width: 900px) {
+  .physical-examination__grid {
+    grid-template-columns: 1fr;
+  }
+}

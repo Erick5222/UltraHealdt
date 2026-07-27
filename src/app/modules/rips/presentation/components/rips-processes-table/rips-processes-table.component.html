@@ -1,0 +1,83 @@
+<section class="rips-processes">
+  <header class="rips-processes__header">
+    <h2 class="rips-processes__title">Procesos Recientes</h2>
+    <span class="rips-processes__ref">{{ reference }}</span>
+  </header>
+
+  <div class="rips-processes__wrap">
+    <table class="rips-processes__table">
+      <thead>
+        <tr>
+          <th>FECHA / PERIODO</th>
+          <th>EMPRESA</th>
+          <th>REGISTROS</th>
+          <th>ESTADO</th>
+          <th>ACCIONES</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (process of processes(); track process.id) {
+          <tr>
+            <td>
+              <p class="rips-processes__date">{{ process.dateLabel }}</p>
+              <p class="rips-processes__period">{{ process.periodLabel }}</p>
+            </td>
+            <td>{{ process.company }}</td>
+            <td class="rips-processes__records">{{ process.records | number: '1.0-0' }}</td>
+            <td><uh-rips-status-badge [status]="process.status" [label]="process.statusLabel" /></td>
+            <td>
+              @if (process.actionType === 'download') {
+                <button
+                  class="rips-processes__action rips-processes__action--primary"
+                  type="button"
+                  aria-label="Descargar"
+                  (click)="processAction.emit(process.id)"
+                >
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                    <path d="M9 3V12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                    <path d="M6 9L9 12L12 9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M4 15H14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                  </svg>
+                </button>
+              } @else if (process.actionType === 'errors') {
+                <button
+                  class="rips-processes__action rips-processes__action--danger"
+                  type="button"
+                  aria-label="Ver errores"
+                  (click)="processAction.emit(process.id)"
+                >
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                    <circle cx="9" cy="9" r="6.5" stroke="currentColor" stroke-width="1.4"/>
+                    <path d="M9 6V10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                    <circle cx="9" cy="12.5" r="0.75" fill="currentColor"/>
+                  </svg>
+                </button>
+              } @else {
+                <button
+                  class="rips-processes__action"
+                  type="button"
+                  aria-label="Consultar estado"
+                  (click)="processAction.emit(process.id)"
+                >
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                    <path d="M14 9C14 12.3137 11.3137 15 8 15C4.68629 15 2 12.3137 2 9C2 5.68629 4.68629 3 8 3C10.2 3 12.1 4.2 13.1 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                    <path d="M13 3V6H10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              }
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <footer class="rips-processes__footer">
+    <button class="rips-processes__view-all" type="button" (click)="toggleViewAll.emit()">
+      {{ showAll() ? 'Ver procesos recientes' : 'Ver todos los procesos' }}
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+        <path d="M3.5 5.25L7 8.75L10.5 5.25" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+  </footer>
+</section>

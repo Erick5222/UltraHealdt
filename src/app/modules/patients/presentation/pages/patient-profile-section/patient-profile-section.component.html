@@ -1,0 +1,158 @@
+<section class="patient-profile-section">
+  <header class="patient-profile-section__header">
+    <h2>{{ sectionTitle() }}</h2>
+  </header>
+
+  @if (section() === 'atenciones' && showConsultationPanel()) {
+    <article class="patient-profile-section__panel patient-profile-section__panel--highlight">
+      <h3>Nueva Consulta Médica</h3>
+      <div class="patient-profile-section__form-grid">
+        <label class="patient-profile-section__field">
+          <span>Fecha de atención</span>
+          <input type="date" />
+        </label>
+        <label class="patient-profile-section__field">
+          <span>Médico tratante</span>
+          <input type="text" placeholder="Nombre del médico" />
+        </label>
+        <label class="patient-profile-section__field">
+          <span>Tipo de consulta</span>
+          <select>
+            <option>Consulta de medicina laboral</option>
+            <option>Control periódico</option>
+            <option>Valoración de ingreso</option>
+          </select>
+        </label>
+        <label class="patient-profile-section__field patient-profile-section__field--full">
+          <span>Motivo de consulta</span>
+          <textarea rows="3" placeholder="Describa el motivo de la consulta..."></textarea>
+        </label>
+      </div>
+      <div class="patient-profile-section__panel-actions">
+        <button class="patient-profile-section__button patient-profile-section__button--ghost" type="button">
+          Cancelar
+        </button>
+        <button class="patient-profile-section__button patient-profile-section__button--primary" type="button">
+          Registrar consulta
+        </button>
+      </div>
+    </article>
+  }
+
+  @if (section() === 'documentos' && showUploadPanel()) {
+    <article class="patient-profile-section__panel patient-profile-section__panel--highlight">
+      <h3>Subir Documento</h3>
+      <div class="patient-profile-section__upload">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 6V20M16 20L11 15M16 20L21 15" stroke="#0058BE" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M8 24H24" stroke="#0058BE" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        <p>Arrastre el archivo aquí o selecciónelo desde su equipo</p>
+        <label class="patient-profile-section__upload-button">
+          Seleccionar archivo
+          <input type="file" hidden />
+        </label>
+      </div>
+      <div class="patient-profile-section__form-grid">
+        <label class="patient-profile-section__field">
+          <span>Tipo de documento</span>
+          <select>
+            <option>Certificado médico</option>
+            <option>Certificado ARL</option>
+            <option>Examen de laboratorio</option>
+            <option>Otro</option>
+          </select>
+        </label>
+        <label class="patient-profile-section__field">
+          <span>Fecha del documento</span>
+          <input type="date" />
+        </label>
+      </div>
+    </article>
+  }
+
+  <article class="patient-profile-section__card">
+    @switch (section()) {
+      @case ('historia-clinica') {
+        <ul class="patient-profile-section__list">
+          <li>
+            <strong>Antecedentes familiares</strong>
+            <span>Hipertensión arterial (padre)</span>
+          </li>
+          <li>
+            <strong>Antecedentes personales</strong>
+            <span>Alérgico a penicilina</span>
+          </li>
+          <li>
+            <strong>Última actualización</strong>
+            <span>12 Oct 2023 • Dr. Carlos Ruiz</span>
+          </li>
+        </ul>
+      }
+      @case ('atenciones') {
+        <ul class="patient-profile-section__list">
+          <li>
+            <strong>Examen Periódico</strong>
+            <span>Hace 15 días • Dr. Carlos Ruiz</span>
+          </li>
+          <li>
+            <strong>Valoración de ingreso</strong>
+            <span>12 Mar 2018 • Dra. Ana López</span>
+          </li>
+          <li>
+            <strong>Control post-incapacidad</strong>
+            <span>04 Jun 2022 • Dr. Carlos Ruiz</span>
+          </li>
+        </ul>
+      }
+      @case ('examenes') {
+        <ul class="patient-profile-section__list">
+          <li>
+            <strong>Audiometría Anual</strong>
+            <span>05 Oct 2023 • Resultado: Normal</span>
+          </li>
+          <li>
+            <strong>Optometría</strong>
+            <span>18 Ago 2023 • Resultado: Normal</span>
+          </li>
+          <li>
+            <strong>Espirometría</strong>
+            <span>22 Jul 2023 • Resultado: Normal</span>
+          </li>
+        </ul>
+      }
+      @case ('documentos') {
+        <ul class="patient-profile-section__list">
+          <li>
+            <strong>Certificado ARL</strong>
+            <span>22 Sep 2023 • PDF • 245 KB</span>
+          </li>
+          <li>
+            <strong>Examen médico ocupacional</strong>
+            <span>12 Oct 2023 • PDF • 512 KB</span>
+          </li>
+          <li>
+            <strong>Autorización EPS</strong>
+            <span>01 Feb 2024 • PDF • 180 KB</span>
+          </li>
+        </ul>
+      }
+      @case ('restricciones') {
+        <ul class="patient-profile-section__list">
+          <li>
+            <strong>Estado actual</strong>
+            <span>Apto sin restricciones</span>
+          </li>
+          <li>
+            <strong>Última evaluación</strong>
+            <span>12 Oct 2023 • Dr. Carlos Ruiz</span>
+          </li>
+          <li>
+            <strong>Próximo control</strong>
+            <span>Diciembre 2024</span>
+          </li>
+        </ul>
+      }
+    }
+  </article>
+</section>

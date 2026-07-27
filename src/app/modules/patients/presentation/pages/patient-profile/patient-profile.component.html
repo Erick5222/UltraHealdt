@@ -1,0 +1,10 @@
+<section class="patient-profile">
+  @if (patientId()) {
+    <uh-patient-profile-header [patientId]="patientId()!" [patient]="patient()" />
+    <uh-patient-profile-tabs [patientId]="patientId()!" />
+  }
+
+  <router-outlet />
+
+ 
+</section>

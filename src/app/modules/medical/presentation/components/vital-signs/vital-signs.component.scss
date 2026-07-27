@@ -1,0 +1,111 @@
+:host {
+  display: block;
+}
+
+.vital-signs {
+  padding: 24px;
+  border: 1px solid #eef1f6;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+}
+
+.vital-signs__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.vital-signs__title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.vital-signs__title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #00236f;
+}
+
+.vital-signs__timestamp {
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1;
+  color: #94a3b8;
+  white-space: nowrap;
+}
+
+.vital-signs__grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.vital-signs__item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px 14px;
+  border: 1px solid #eef1f6;
+  border-radius: 12px;
+  background: #f8fafc;
+}
+
+.vital-signs__label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  color: #94a3b8;
+  text-transform: uppercase;
+}
+
+.vital-signs__value {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #111827;
+
+  small {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #64748b;
+  }
+}
+
+.vital-signs__badge {
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: #fff7ed;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  color: #c2410c;
+  text-transform: uppercase;
+}
+
+@media (max-width: 1100px) {
+  .vital-signs__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .vital-signs__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .vital-signs__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

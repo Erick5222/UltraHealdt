@@ -1,0 +1,439 @@
+<section class="patient-form" [class.patient-form--readonly]="isReadOnly()">
+  <header class="patient-form__header">
+    <div class="patient-form__heading">
+      <p class="patient-form__eyebrow">GESTIÓN DE PACIENTES</p>
+      <h1 class="patient-form__title">{{ pageTitle() }}</h1>
+      <p class="patient-form__description">
+        @if (isReadOnly()) {
+          Consulte la información registrada del paciente en el sistema de vigilancia epidemiológica
+          y salud ocupacional.
+        } @else {
+          Complete los campos obligatorios para registrar al paciente en el sistema de vigilancia
+          epidemiológica y salud ocupacional.
+        }
+      </p>
+    </div>
+
+    <div class="patient-form__header-actions">
+      <a class="patient-form__button patient-form__button--ghost" routerLink="/patients">
+        {{ isReadOnly() ? 'VOLVER' : 'CANCELAR' }}
+      </a>
+      @if (isReadOnly()) {
+        <a class="patient-form__button patient-form__button--primary" [routerLink]="editPatientRoute()">
+          EDITAR PACIENTE
+        </a>
+      } @else {
+        <button class="patient-form__button patient-form__button--draft" type="button">
+          GUARDAR BORRADOR
+        </button>
+        <button class="patient-form__button patient-form__button--primary" type="button">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path
+              d="M3 2.5H10L13 5.5V13.5C13 14.0523 12.5523 14.5 12 14.5H4C3.44772 14.5 3 14.0523 3 13.5V2.5Z"
+              stroke="currentColor"
+              stroke-width="1.3"
+            />
+            <path d="M10 2.5V6H13" stroke="currentColor" stroke-width="1.3" />
+            <path d="M5.5 9H10.5M5.5 11.5H9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" />
+          </svg>
+          GUARDAR PACIENTE
+        </button>
+      }
+    </div>
+  </header>
+
+  <fieldset class="patient-form__fieldset" [disabled]="isReadOnly()">
+  <div class="patient-form__layout">
+    <div class="patient-form__main">
+      <section class="patient-form__card">
+        <header class="patient-form__card-header">
+          <svg class="patient-form__card-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <rect x="2" y="4" width="14" height="10" rx="2" stroke="#0058BE" stroke-width="1.3"/>
+            <circle cx="7" cy="9" r="2" stroke="#0058BE" stroke-width="1.3"/>
+            <path d="M11 7H14M11 9.5H13" stroke="#0058BE" stroke-width="1.3" stroke-linecap="round"/>
+          </svg>
+          <h2>Información Personal</h2>
+        </header>
+
+        <div class="patient-form__fields patient-form__fields--two-columns">
+          <div class="patient-form__field">
+            <label class="patient-form__label" for="document-type">
+              Tipo de Documento <span class="patient-form__required">*</span>
+            </label>
+            <div class="patient-form__select-wrap">
+              <select id="document-type" class="patient-form__select">
+                <option [selected]="isOptionSelected(patient()?.documentTypeLabel ?? 'Cédula de Ciudadanía', 'Cédula de Ciudadanía')">
+                  Cédula de Ciudadanía
+                </option>
+                <option [selected]="isOptionSelected(patient()?.documentTypeLabel ?? '', 'Cédula de Extranjería')">
+                  Cédula de Extranjería
+                </option>
+                <option [selected]="isOptionSelected(patient()?.documentTypeLabel ?? '', 'Pasaporte')">
+                  Pasaporte
+                </option>
+                <option [selected]="isOptionSelected(patient()?.documentTypeLabel ?? '', 'Tarjeta de Identidad')">
+                  Tarjeta de Identidad
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <div class="patient-form__field">
+            <label class="patient-form__label" for="document-number">
+              Número de Documento <span class="patient-form__required">*</span>
+            </label>
+            <input
+              id="document-number"
+              class="patient-form__input"
+              type="text"
+              [value]="patient()?.document ?? '1.000.000.000'"
+            />
+          </div>
+
+          <div class="patient-form__field">
+            <label class="patient-form__label" for="first-name">
+              Primer Nombre <span class="patient-form__required">*</span>
+            </label>
+            <input id="first-name" class="patient-form__input" type="text" [value]="patient()?.firstName ?? ''" />
+          </div>
+
+          <div class="patient-form__field">
+            <label class="patient-form__label" for="middle-name">Segundo Nombre</label>
+            <input id="middle-name" class="patient-form__input" type="text" [value]="patient()?.middleName ?? ''" />
+          </div>
+
+          <div class="patient-form__field">
+            <label class="patient-form__label" for="last-name">
+              Primer Apellido <span class="patient-form__required">*</span>
+            </label>
+            <input id="last-name" class="patient-form__input" type="text" [value]="patient()?.lastName ?? ''" />
+          </div>
+
+          <div class="patient-form__field">
+            <label class="patient-form__label" for="second-last-name">Segundo Apellido</label>
+            <input id="second-last-name" class="patient-form__input" type="text" [value]="patient()?.secondLastName ?? ''" />
+          </div>
+
+          <div class="patient-form__field">
+            <label class="patient-form__label" for="birth-date">
+              Fecha de Nacimiento <span class="patient-form__required">*</span>
+            </label>
+            <input
+              id="birth-date"
+              class="patient-form__input"
+              type="text"
+              placeholder="mm/dd/yyyy"
+              [value]="patient()?.birthDate ?? ''"
+            />
+          </div>
+
+          <div class="patient-form__field">
+            <span class="patient-form__label">
+              Sexo <span class="patient-form__required">*</span>
+            </span>
+            <div class="patient-form__radio-group">
+              <label class="patient-form__radio">
+                <input
+                  class="patient-form__radio-input"
+                  type="radio"
+                  name="gender"
+                  [checked]="isGenderSelected('male') || (!patient() && true)"
+                />
+                <span class="patient-form__radio-mark"></span>
+                <span class="patient-form__radio-label">Masculino</span>
+              </label>
+              <label class="patient-form__radio">
+                <input
+                  class="patient-form__radio-input"
+                  type="radio"
+                  name="gender"
+                  [checked]="isGenderSelected('female')"
+                />
+                <span class="patient-form__radio-mark"></span>
+                <span class="patient-form__radio-label">Femenino</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="patient-form__card">
+        <header class="patient-form__card-header">
+          <svg class="patient-form__card-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <rect x="2" y="6" width="14" height="10" rx="2" stroke="#0058BE" stroke-width="1.3"/>
+            <path d="M6 6V5C6 3.89543 6.89543 3 8 3H10C11.1046 3 12 3.89543 12 5V6" stroke="#0058BE" stroke-width="1.3"/>
+            <path d="M2 9H16" stroke="#0058BE" stroke-width="1.3"/>
+          </svg>
+          <h2>Información Laboral</h2>
+        </header>
+
+        <div class="patient-form__fields">
+          <div class="patient-form__field">
+            <label class="patient-form__label" for="company">
+              Empresa <span class="patient-form__required">*</span>
+            </label>
+            <label class="patient-form__search-wrap">
+              <svg class="patient-form__search-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                <circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M12.5 12.5L16 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <input
+                id="company"
+                class="patient-form__input patient-form__input--search"
+                type="search"
+                placeholder="Buscar empresa..."
+                [value]="patient()?.company ?? ''"
+              />
+            </label>
+          </div>
+
+          <div class="patient-form__fields patient-form__fields--two-columns">
+            <div class="patient-form__field">
+              <label class="patient-form__label" for="job-title">Cargo</label>
+              <input id="job-title" class="patient-form__input" type="text" [value]="patient()?.role ?? ''" />
+            </div>
+
+            <div class="patient-form__field">
+              <label class="patient-form__label" for="department">Área / Departamento</label>
+              <input id="department" class="patient-form__input" type="text" [value]="patient()?.department ?? ''" />
+            </div>
+
+            <div class="patient-form__field">
+              <label class="patient-form__label" for="hire-date">Fecha de Ingreso</label>
+              <input
+                id="hire-date"
+                class="patient-form__input"
+                type="text"
+                placeholder="mm/dd/yyyy"
+                [value]="patient()?.hireDate ?? ''"
+              />
+            </div>
+
+            <div class="patient-form__field">
+              <label class="patient-form__label" for="contract-type">Tipo de Contrato</label>
+              <div class="patient-form__select-wrap">
+                <select id="contract-type" class="patient-form__select">
+                  <option [selected]="isOptionSelected(patient()?.contractType ?? 'Término Indefinido', 'Término Indefinido')">
+                    Término Indefinido
+                  </option>
+                  <option [selected]="isOptionSelected(patient()?.contractType ?? '', 'Término Fijo')">
+                    Término Fijo
+                  </option>
+                  <option [selected]="isOptionSelected(patient()?.contractType ?? '', 'Obra o Labor')">
+                    Obra o Labor
+                  </option>
+                  <option [selected]="isOptionSelected(patient()?.contractType ?? '', 'Prestación de Servicios')">
+                    Prestación de Servicios
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="patient-form__card">
+        <header class="patient-form__card-header">
+          <svg class="patient-form__card-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <path d="M3 4H15M3 7H15M3 10H11M3 13H9" stroke="#0058BE" stroke-width="1.3" stroke-linecap="round"/>
+          </svg>
+          <h2>Observaciones Generales</h2>
+        </header>
+
+        <div class="patient-form__field">
+          <textarea
+            id="observations"
+            class="patient-form__textarea"
+            rows="5"
+            placeholder="Notas adicionales sobre el paciente o su situación laboral..."
+          >{{ patient()?.observations ?? '' }}</textarea>
+        </div>
+      </section>
+    </div>
+
+    <aside class="patient-form__sidebar">
+      <section class="patient-form__card patient-form__card--medical">
+        <img
+          class="patient-form__medical-watermark"
+          src="/images/illustrations/patients/medical-kit-watermark.svg"
+          alt=""
+          width="120"
+          height="120"
+        />
+
+        <header class="patient-form__card-header patient-form__card-header--light">
+          <svg class="patient-form__card-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <rect x="2" y="4" width="14" height="12" rx="2" stroke="white" stroke-width="1.3"/>
+            <path d="M9 7V13M6 10H12" stroke="white" stroke-width="1.3" stroke-linecap="round"/>
+          </svg>
+          <h2>Información Médica Base</h2>
+        </header>
+
+        <div class="patient-form__fields patient-form__fields--two-columns">
+          <div class="patient-form__field">
+            <label class="patient-form__label patient-form__label--light" for="blood-type">
+              GRUPO SANGUÍNEO
+            </label>
+            <div class="patient-form__select-wrap patient-form__select-wrap--light">
+              <select id="blood-type" class="patient-form__select patient-form__select--light">
+                <option [selected]="isOptionSelected(patient()?.bloodType ?? 'O', 'O')">O</option>
+                <option [selected]="isOptionSelected(patient()?.bloodType ?? '', 'A')">A</option>
+                <option [selected]="isOptionSelected(patient()?.bloodType ?? '', 'B')">B</option>
+                <option [selected]="isOptionSelected(patient()?.bloodType ?? '', 'AB')">AB</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="patient-form__field">
+            <label class="patient-form__label patient-form__label--light" for="rh">RH</label>
+            <div class="patient-form__select-wrap patient-form__select-wrap--light">
+              <select id="rh" class="patient-form__select patient-form__select--light">
+                <option [selected]="isOptionSelected(patient()?.rh ?? 'Positivo (+)', 'Positivo (+)')">
+                  Positivo (+)
+                </option>
+                <option [selected]="isOptionSelected(patient()?.rh ?? '', 'Negativo (-)')">
+                  Negativo (-)
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <div class="patient-form__field">
+            <label class="patient-form__label patient-form__label--light" for="eps">EPS</label>
+            <input
+              id="eps"
+              class="patient-form__input patient-form__input--light"
+              type="text"
+              placeholder="Nombre EPS"
+              [value]="patient()?.eps ?? ''"
+            />
+          </div>
+
+          <div class="patient-form__field">
+            <label class="patient-form__label patient-form__label--light" for="arl">ARL</label>
+            <input
+              id="arl"
+              class="patient-form__input patient-form__input--light"
+              type="text"
+              placeholder="Nombre ARL"
+              [value]="patient()?.arl ?? ''"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section class="patient-form__card">
+        <header class="patient-form__card-header">
+          <svg class="patient-form__card-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <rect x="2" y="3" width="14" height="12" rx="2" stroke="#0058BE" stroke-width="1.3"/>
+            <circle cx="7" cy="8" r="2" stroke="#0058BE" stroke-width="1.3"/>
+            <path d="M11 7H14M11 9.5H13" stroke="#0058BE" stroke-width="1.3" stroke-linecap="round"/>
+          </svg>
+          <h2>Ubicación y Contacto</h2>
+        </header>
+
+        <div class="patient-form__fields">
+          <div class="patient-form__fields patient-form__fields--two-columns">
+            <div class="patient-form__field">
+              <label class="patient-form__label" for="mobile">
+                Celular <span class="patient-form__required">*</span>
+              </label>
+              <input id="mobile" class="patient-form__input" type="text" [value]="patient()?.phone ?? ''" />
+            </div>
+
+            <div class="patient-form__field">
+              <label class="patient-form__label" for="landline">Teléfono Fijo</label>
+              <input id="landline" class="patient-form__input" type="text" [value]="patient()?.landline ?? ''" />
+            </div>
+          </div>
+
+          <div class="patient-form__field">
+            <label class="patient-form__label" for="email">Correo Electrónico</label>
+            <input
+              id="email"
+              class="patient-form__input"
+              type="email"
+              placeholder="paciente@ejemplo.com"
+              [value]="patient()?.email ?? ''"
+            />
+          </div>
+
+          <div class="patient-form__fields patient-form__fields--two-columns">
+            <div class="patient-form__field">
+              <label class="patient-form__label" for="country">País</label>
+              <div class="patient-form__select-wrap">
+                <select id="country" class="patient-form__select">
+                  <option [selected]="isOptionSelected(patient()?.country ?? 'Colombia', 'Colombia')">
+                    Colombia
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="patient-form__field">
+              <label class="patient-form__label" for="state">Departamento / Estado</label>
+              <div class="patient-form__select-wrap">
+                <select id="state" class="patient-form__select">
+                  <option value="" [selected]="!patient()?.state"></option>
+                  <option [selected]="isOptionSelected(patient()?.state ?? '', 'Antioquia')">Antioquia</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="patient-form__field">
+            <label class="patient-form__label" for="city">Ciudad</label>
+            <input id="city" class="patient-form__input" type="text" [value]="patient()?.city ?? ''" />
+          </div>
+
+          <div class="patient-form__field">
+            <label class="patient-form__label" for="address">Dirección de Residencia</label>
+            <input id="address" class="patient-form__input" type="text" [value]="patient()?.address ?? ''" />
+          </div>
+        </div>
+      </section>
+
+      <section class="patient-form__card patient-form__card--emergency">
+        <img
+          class="patient-form__emergency-watermark"
+          src="/images/illustrations/patients/medical-kit-watermark.svg"
+          alt=""
+          width="120"
+          height="120"
+        />
+
+        <header class="patient-form__card-header">
+          <svg class="patient-form__card-icon patient-form__card-icon--danger" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <path d="M9 2L10.5 6.5H15L11.5 9L13 13.5L9 11L5 13.5L6.5 9L2 6.5H6.5L9 2Z" stroke="#DC2626" stroke-width="1.3" stroke-linejoin="round"/>
+          </svg>
+          <h2>Contacto de Emergencia</h2>
+        </header>
+
+        <div class="patient-form__fields">
+          <div class="patient-form__field">
+            <label class="patient-form__label" for="emergency-name">Nombre Completo</label>
+            <input id="emergency-name" class="patient-form__input" type="text" [value]="patient()?.emergencyName ?? ''" />
+          </div>
+
+          <div class="patient-form__fields patient-form__fields--two-columns">
+            <div class="patient-form__field">
+              <label class="patient-form__label" for="emergency-relationship">Parentesco</label>
+              <input
+                id="emergency-relationship"
+                class="patient-form__input"
+                type="text"
+                [value]="patient()?.emergencyRelationship ?? ''"
+              />
+            </div>
+
+            <div class="patient-form__field">
+              <label class="patient-form__label" for="emergency-phone">Teléfono</label>
+              <input id="emergency-phone" class="patient-form__input" type="text" [value]="patient()?.emergencyPhone ?? ''" />
+            </div>
+          </div>
+        </div>
+      </section>
+    </aside>
+  </div>
+  </fieldset>
+</section>

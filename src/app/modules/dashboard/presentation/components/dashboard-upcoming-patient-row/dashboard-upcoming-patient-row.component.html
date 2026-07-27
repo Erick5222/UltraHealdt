@@ -1,0 +1,30 @@
+<article
+  class="dashboard-upcoming-patient-row"
+  [class.dashboard-upcoming-patient-row--divider]="showDivider()"
+>
+  <img
+    class="dashboard-upcoming-patient-row__avatar"
+    [src]="avatar()"
+    [alt]="name()"
+    width="48"
+    height="48"
+  />
+
+  <div class="dashboard-upcoming-patient-row__info">
+    <p class="dashboard-upcoming-patient-row__name">{{ name() }}</p>
+    <p class="dashboard-upcoming-patient-row__detail">
+      {{ examType() }} • {{ company() }}
+    </p>
+  </div>
+
+  <div class="dashboard-upcoming-patient-row__schedule">
+    <p class="dashboard-upcoming-patient-row__time">{{ time() }}</p>
+    <span
+      class="dashboard-upcoming-patient-row__status"
+      [class.dashboard-upcoming-patient-row__status--waiting]="status() === 'waiting'"
+      [class.dashboard-upcoming-patient-row__status--scheduled]="status() === 'scheduled'"
+    >
+      {{ statusLabel() }}
+    </span>
+  </div>
+</article>

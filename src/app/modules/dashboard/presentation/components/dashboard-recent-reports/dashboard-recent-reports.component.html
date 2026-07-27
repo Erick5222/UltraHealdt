@@ -1,0 +1,15 @@
+<section class="dashboard-recent-reports">
+  <h2 class="dashboard-recent-reports__title">Reportes Recientes</h2>
+
+  <div class="dashboard-recent-reports__list">
+    @for (report of reports; track report.title; let i = $index) {
+      <uh-dashboard-recent-report-row
+        [icon]="report.icon"
+        [title]="report.title"
+        [generatedAt]="report.generatedAt"
+        [iconTone]="report.iconTone"
+        [showDivider]="i < reports.length - 1"
+      />
+    }
+  </div>
+</section>

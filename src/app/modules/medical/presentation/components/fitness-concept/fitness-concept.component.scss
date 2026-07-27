@@ -1,0 +1,82 @@
+:host {
+  display: block;
+}
+
+.fitness-concept {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 28px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #9a6b2f 0%, #b8860b 45%, #c9952c 100%);
+  color: #ffffff;
+}
+
+.fitness-concept__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.fitness-concept__content {
+  flex: 1;
+  min-width: 0;
+}
+
+.fitness-concept__label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.fitness-concept__value {
+  margin: 0;
+  font-size: 1.375rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.fitness-concept__button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 44px;
+  padding: 0 20px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.14);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  color: #ffffff;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .fitness-concept {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .fitness-concept__icon {
+    margin: 0 auto;
+  }
+
+  .fitness-concept__button {
+    justify-content: center;
+    width: 100%;
+  }
+}

@@ -1,0 +1,11 @@
+<span
+  class="billing-status-badge"
+  [class.billing-status-badge--approved]="status() === 'approved'"
+  [class.billing-status-badge--pending]="status() === 'pending'"
+  [class.billing-status-badge--sent]="status() === 'sent'"
+  [class.billing-status-badge--rejected]="status() === 'rejected'"
+  [class.billing-status-badge--cancelled]="status() === 'cancelled'"
+>
+  <span class="billing-status-badge__dot" aria-hidden="true"></span>
+  {{ label() }}
+</span>

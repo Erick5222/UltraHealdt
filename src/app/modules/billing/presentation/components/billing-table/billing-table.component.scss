@@ -1,0 +1,82 @@
+.billing-table__wrap {
+  overflow-x: auto;
+}
+
+.billing-table {
+  width: 100%;
+  min-width: 980px;
+  border-collapse: collapse;
+}
+
+.billing-table thead th {
+  padding: 16px 20px;
+  border-bottom: 1px solid #eef1f6;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  color: #94a3b8;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.billing-table tbody td {
+  padding: 18px 20px;
+  border-bottom: 1px solid #eef1f6;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #334155;
+  vertical-align: middle;
+}
+
+.billing-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.billing-table__invoice-link {
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #0058be;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.billing-table__entity-name {
+  margin: 0 0 2px;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #111827;
+}
+
+.billing-table__entity-id {
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #64748b;
+}
+
+.billing-table__amount {
+  font-weight: 700;
+  color: #111827;
+  white-space: nowrap;
+}
+
+.billing-table__empty {
+  padding: 32px 20px !important;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #64748b;
+  text-align: center;
+}
+
+.billing-table thead th:last-child,
+.billing-table tbody td:last-child {
+  text-align: right;
+}

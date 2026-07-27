@@ -1,0 +1,206 @@
+<div class="patient-profile__layout">
+  <div class="patient-profile__main">
+    <article class="patient-profile__card">
+      <header class="patient-profile__card-header">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+          <circle cx="9" cy="6" r="3" stroke="#0058BE" stroke-width="1.3"/>
+          <path d="M3 16C4.5 12.5 6.5 11 9 11C11.5 11 13.5 12.5 15 16" stroke="#0058BE" stroke-width="1.3" stroke-linecap="round"/>
+        </svg>
+        <h2>Datos Personales</h2>
+      </header>
+
+      <div class="patient-profile__fields patient-profile__fields--three-columns">
+        <div class="patient-profile__field">
+          <span class="patient-profile__label">Fecha de Nacimiento</span>
+          <p class="patient-profile__value">{{ birthDate() }}</p>
+        </div>
+        <div class="patient-profile__field">
+          <span class="patient-profile__label">Género</span>
+          <p class="patient-profile__value">{{ gender() }}</p>
+        </div>
+        <div class="patient-profile__field">
+          <span class="patient-profile__label">Grupo Sanguíneo</span>
+          <p class="patient-profile__value patient-profile__value--highlight">{{ bloodType() }}</p>
+        </div>
+        <div class="patient-profile__field">
+          <span class="patient-profile__label">Teléfono Móvil</span>
+          <p class="patient-profile__value">{{ phone() }}</p>
+        </div>
+        <div class="patient-profile__field">
+          <span class="patient-profile__label">Correo Electrónico</span>
+          <p class="patient-profile__value">{{ email() }}</p>
+        </div>
+        <div class="patient-profile__field">
+          <span class="patient-profile__label">Estado Civil</span>
+          <p class="patient-profile__value">Casado</p>
+        </div>
+        <div class="patient-profile__field patient-profile__field--full">
+          <span class="patient-profile__label">Dirección de Residencia</span>
+          <p class="patient-profile__value">{{ address() }}</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="patient-profile__card">
+      <header class="patient-profile__card-header">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+          <rect x="2" y="6" width="14" height="10" rx="2" stroke="#0058BE" stroke-width="1.3"/>
+          <path d="M6 6V5C6 3.89543 6.89543 3 8 3H10C11.1046 3 12 3.89543 12 5V6" stroke="#0058BE" stroke-width="1.3"/>
+        </svg>
+        <h2>Información Laboral</h2>
+      </header>
+
+      <div class="patient-profile__labor-grid">
+        <div class="patient-profile__fields patient-profile__fields--two-columns">
+          <div class="patient-profile__field">
+            <span class="patient-profile__label">Fecha Ingreso</span>
+            <p class="patient-profile__value">{{ hireDate() }}</p>
+          </div>
+          <div class="patient-profile__field">
+            <span class="patient-profile__label">Antigüedad</span>
+            <p class="patient-profile__value">5 años, 8 meses</p>
+          </div>
+          <div class="patient-profile__field">
+            <span class="patient-profile__label">Tipo Contrato</span>
+            <p class="patient-profile__value">{{ contractType() }}</p>
+          </div>
+          <div class="patient-profile__field">
+            <span class="patient-profile__label">Área / Departamento</span>
+            <p class="patient-profile__value">{{ department() }}</p>
+          </div>
+        </div>
+
+        <div class="patient-profile__affiliations">
+          <div class="patient-profile__affiliation">
+            <div class="patient-profile__affiliation-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 2L12 7H17L13 10L14.5 15L10 12L5.5 15L7 10L3 7H8L10 2Z" fill="#0058BE"/>
+              </svg>
+            </div>
+            <div>
+              <span class="patient-profile__affiliation-label">EPS</span>
+              <p class="patient-profile__affiliation-value">{{ eps() }}</p>
+            </div>
+          </div>
+          <div class="patient-profile__affiliation">
+            <div class="patient-profile__affiliation-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 2L12 7H17L13 10L14.5 15L10 12L5.5 15L7 10L3 7H8L10 2Z" fill="#0058BE"/>
+              </svg>
+            </div>
+            <div>
+              <span class="patient-profile__affiliation-label">ARL</span>
+              <p class="patient-profile__affiliation-value">{{ arl() }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <aside class="patient-profile__sidebar">
+    <article class="patient-profile__emergency-card">
+      <img
+        class="patient-profile__emergency-watermark"
+        src="/images/illustrations/patients/medical-kit-watermark.svg"
+        alt=""
+        width="100"
+        height="100"
+      />
+      <header class="patient-profile__emergency-header">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+          <path d="M9 2L10.5 6.5H15L11.5 9L13 13.5L9 11L5 13.5L6.5 9L2 6.5H6.5L9 2Z" stroke="white" stroke-width="1.3" stroke-linejoin="round"/>
+        </svg>
+        <h2>Contacto de Emergencia</h2>
+      </header>
+      <p class="patient-profile__emergency-name">{{ emergencyName() }}</p>
+      <div class="patient-profile__emergency-detail">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <rect x="4" y="2" width="8" height="12" rx="2" stroke="currentColor" stroke-width="1.2"/>
+          <path d="M7 12H9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+        <div>
+          <p class="patient-profile__emergency-relationship">Parentesco: {{ emergencyRelationship() }}</p>
+          <p class="patient-profile__emergency-phone">{{ emergencyPhone() }}</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="patient-profile__card">
+      <header class="patient-profile__card-header patient-profile__card-header--compact">
+        <h2>Últimos Eventos</h2>
+      </header>
+
+      <ul class="patient-profile__timeline">
+        <li class="patient-profile__timeline-item">
+          <span class="patient-profile__timeline-icon patient-profile__timeline-icon--blue" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <rect x="2" y="4" width="12" height="10" rx="2" stroke="currentColor" stroke-width="1.2"/>
+              <path d="M8 7V10M6.5 8.5H9.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <div>
+            <p class="patient-profile__timeline-title">Examen Periódico</p>
+            <p class="patient-profile__timeline-meta">Hace 15 días • Dr. Carlos Ruiz</p>
+          </div>
+        </li>
+        <li class="patient-profile__timeline-item">
+          <span class="patient-profile__timeline-icon patient-profile__timeline-icon--purple" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8C3 5 5 3 8 3C11 3 13 5 13 8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+              <path d="M2 10C4 9 6 9 8 10C10 11 12 11 14 10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <div>
+            <p class="patient-profile__timeline-title">Audiometría Anual</p>
+            <p class="patient-profile__timeline-meta">05 de Octubre, 2023</p>
+          </div>
+        </li>
+        <li class="patient-profile__timeline-item">
+          <span class="patient-profile__timeline-icon patient-profile__timeline-icon--cyan" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M4 2H10L12 4V13C12 13.5523 11.5523 14 11 14H5C4.44772 14 4 13.5523 4 13V2Z" stroke="currentColor" stroke-width="1.2"/>
+              <path d="M6 6H10M6 9H10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <div>
+            <p class="patient-profile__timeline-title">Cargue de Certificado ARL</p>
+            <p class="patient-profile__timeline-meta">22 de Septiembre, 2023</p>
+          </div>
+        </li>
+      </ul>
+    </article>
+
+    <article class="patient-profile__compliance-card">
+      <header class="patient-profile__compliance-header">
+        <h2>Estado de Cumplimiento</h2>
+        <span class="patient-profile__compliance-badge">92%</span>
+      </header>
+      <div class="patient-profile__compliance-bar" aria-hidden="true">
+        <span class="patient-profile__compliance-progress"></span>
+      </div>
+      <div class="patient-profile__compliance-stats">
+        <div class="patient-profile__compliance-stat">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <circle cx="9" cy="9" r="7" stroke="#22C55E" stroke-width="1.3"/>
+            <path d="M6 9L8 11L12 7" stroke="#22C55E" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div>
+            <span class="patient-profile__compliance-stat-label">APTO</span>
+            <p class="patient-profile__compliance-stat-value">Sin Restricciones</p>
+          </div>
+        </div>
+        <div class="patient-profile__compliance-stat">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <rect x="3" y="4" width="12" height="11" rx="2" stroke="#0058BE" stroke-width="1.3"/>
+            <path d="M3 8H15M6 2V5M12 2V5" stroke="#0058BE" stroke-width="1.3" stroke-linecap="round"/>
+          </svg>
+          <div>
+            <span class="patient-profile__compliance-stat-label">Próx. Control</span>
+            <p class="patient-profile__compliance-stat-value">Dic 2024</p>
+          </div>
+        </div>
+      </div>
+    </article>
+  </aside>
+</div>

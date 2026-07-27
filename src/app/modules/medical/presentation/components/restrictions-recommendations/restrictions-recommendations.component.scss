@@ -1,0 +1,69 @@
+:host {
+  display: block;
+}
+
+.restrictions-recommendations__title {
+  margin: 0 0 16px;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #00236f;
+}
+
+.restrictions-recommendations__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.restrictions-recommendations__item {
+  display: flex;
+  gap: 14px;
+  padding: 18px 20px;
+  border-radius: 14px;
+}
+
+.restrictions-recommendations__item--restriction {
+  border: 1px solid #fecaca;
+  background: #fef2f2;
+}
+
+.restrictions-recommendations__item--recommendation {
+  border: 1px solid #bfdbfe;
+  background: #eff6ff;
+}
+
+.restrictions-recommendations__icon {
+  flex-shrink: 0;
+  color: inherit;
+}
+
+.restrictions-recommendations__item--restriction .restrictions-recommendations__icon {
+  color: #dc2626;
+}
+
+.restrictions-recommendations__item--recommendation .restrictions-recommendations__icon {
+  color: #0058be;
+}
+
+.restrictions-recommendations__item-title {
+  margin: 0 0 6px;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #111827;
+}
+
+.restrictions-recommendations__item-text {
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #64748b;
+}
+
+@media (max-width: 768px) {
+  .restrictions-recommendations__grid {
+    grid-template-columns: 1fr;
+  }
+}

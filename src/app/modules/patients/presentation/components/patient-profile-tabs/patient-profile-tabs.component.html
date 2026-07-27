@@ -1,0 +1,12 @@
+<nav class="patient-profile-tabs" aria-label="Secciones del paciente">
+  @for (tab of tabs; track tab.id) {
+    <a
+      class="patient-profile-tabs__item"
+      [routerLink]="tabRoute(tab.id)"
+      routerLinkActive="patient-profile-tabs__item--active"
+      [routerLinkActiveOptions]="{ exact: tab.id === 'resumen' }"
+    >
+      {{ tab.label }}
+    </a>
+  }
+</nav>

@@ -1,0 +1,95 @@
+<section class="medical-history">
+  <uh-medical-history-header [patientId]="patientId()" />
+  <uh-medical-history-filters [filters]="filters()" (filtersChange)="onFiltersChange($event)" />
+
+  @if (actionMessage()) {
+    <p class="medical-history__feedback" role="status">{{ actionMessage() }}</p>
+  }
+
+  <div class="medical-history__timeline">
+    @if (!hasFilteredResults()) {
+      <p class="medical-history__empty">No hay registros que coincidan con los filtros seleccionados.</p>
+    }
+
+    @for (record of visibleRecords(); track record.id) {
+      <article class="medical-history__entry">
+        <div class="medical-history__entry-meta">
+          <span class="medical-history__entry-date">{{ record.dateLabel }}</span>
+          <h2 class="medical-history__entry-title">{{ record.title }}</h2>
+          <p class="medical-history__entry-id">ID Registro: {{ record.registryId }}</p>
+        </div>
+
+        <div class="medical-history__entry-line" aria-hidden="true">
+          <span class="medical-history__entry-dot"></span>
+        </div>
+
+        <div class="medical-history__record">
+          <div class="medical-history__record-top">
+            <div class="medical-history__record-info">
+              <div class="medical-history__record-field">
+                <span class="medical-history__record-label">Profesional</span>
+                <p class="medical-history__record-value">
+                  <strong>{{ record.professionalName }}</strong>
+                  <span>{{ record.professionalRole }}</span>
+                </p>
+              </div>
+              <div class="medical-history__record-field">
+                <span class="medical-history__record-label">Empresa</span>
+                <p class="medical-history__record-value">
+                  <strong>{{ record.company }}</strong>
+                </p>
+              </div>
+            </div>
+            <span class="medical-history__status" [class]="statusClass(record.status)">
+              <span class="medical-history__status-dot"></span>
+              {{ statusLabel(record.status) }}
+            </span>
+          </div>
+
+          <span class="medical-history__aptitude" [class]="aptitudeClass(record.aptitude)">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8L6 11L13 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            {{ record.aptitudeLabel }}
+          </span>
+
+          @if (record.summary) {
+            <p class="medical-history__summary">{{ record.summary }}</p>
+          }
+
+          <footer class="medical-history__record-actions">
+            <button class="medical-history__action" type="button" (click)="viewDetail(record)">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.2"/>
+                <circle cx="8" cy="8" r="2" stroke="currentColor" stroke-width="1.2"/>
+              </svg>
+              VER DETALLE
+            </button>
+            @if (record.showResults) {
+              <button class="medical-history__action" type="button" (click)="viewResults(record)">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3 12V4H13V12H3Z" stroke="currentColor" stroke-width="1.2"/>
+                  <path d="M6 12V9H10V12" stroke="currentColor" stroke-width="1.2"/>
+                </svg>
+                RESULTADOS
+              </button>
+            }
+            <button class="medical-history__action" type="button" (click)="downloadPdf(record)">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M8 2V10M8 10L5.5 7.5M8 10L10.5 7.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                <path d="M3 12V13.5C3 14.0523 3.44772 14.5 4 14.5H12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
+              PDF
+            </button>
+          </footer>
+        </div>
+      </article>
+    }
+  </div>
+
+  @if (hasMoreRecords()) {
+    <button class="medical-history__load-more" type="button" (click)="loadMoreRecords()">
+      CARGAR REGISTROS ANTERIORES
+    </button>
+  }
+</section>

@@ -1,0 +1,340 @@
+<section class="company-form">
+  <header class="company-form__header">
+    <div class="company-form__heading">
+      <nav class="company-form__breadcrumb" aria-label="Ruta de navegación">
+        <a routerLink="/companies">CLIENTES EMPRESARIALES</a>
+        <span class="company-form__breadcrumb-separator">&gt;</span>
+        <span class="company-form__breadcrumb-current">EMPRESA</span>
+      </nav>
+      <h1 class="company-form__title">Detalles de la Empresa</h1>
+    </div>
+
+    <div class="company-form__meta">
+      <div class="company-form__meta-item">
+        <span class="company-form__meta-label">ÚLTIMA MODIFICACIÓN</span>
+        <span class="company-form__meta-value">2023-10-24 14:32</span>
+      </div>
+      <span class="company-form__status">
+        <span class="company-form__status-dot"></span>
+        BORRADOR
+      </span>
+    </div>
+  </header>
+
+  <div class="company-form__layout">
+    <div class="company-form__main">
+      <section class="company-form__card">
+        <header class="company-form__card-header">
+          <img src="/images/icons/Empresas/Icon.svg" alt="" width="16" height="20" />
+          <h2>Información General</h2>
+        </header>
+
+        <div class="company-form__fields company-form__fields--two-columns">
+          <div class="company-form__field">
+            <label class="company-form__label" for="legal-name">
+              RAZÓN SOCIAL <span class="company-form__required">*</span>
+            </label>
+            <input
+              id="legal-name"
+              class="company-form__input"
+              type="text"
+              value="Ultra Health Solutions S.A."
+            />
+            <p class="company-form__hint">Campo obligatorio</p>
+          </div>
+
+          <div class="company-form__field">
+            <label class="company-form__label" for="trade-name">NOMBRE COMERCIAL</label>
+            <input
+              id="trade-name"
+              class="company-form__input"
+              type="text"
+              placeholder="Ej. Ultra Health"
+            />
+          </div>
+
+          <div class="company-form__field">
+            <label class="company-form__label" for="nit">NIT</label>
+            <div class="company-form__input-wrap">
+              <input id="nit" class="company-form__input" type="text" value="900.452.123-5" />
+              <span class="company-form__input-icon company-form__input-icon--success" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <circle cx="9" cy="9" r="8" fill="#0058BE"/>
+                  <path d="M5.5 9L7.5 11L12.5 6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </div>
+            <p class="company-form__feedback company-form__feedback--success">
+              Documento verificado exitosamente
+            </p>
+          </div>
+
+          <div class="company-form__field">
+            <label class="company-form__label" for="company-type">TIPO DE EMPRESA</label>
+            <div class="company-form__select-wrap">
+              <select id="company-type" class="company-form__select">
+                <option selected>Gran Contribuyente</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="company-form__field">
+            <label class="company-form__label" for="economic-activity">ACTIVIDAD ECONÓMICA</label>
+            <input
+              id="economic-activity"
+              class="company-form__input"
+              type="text"
+              placeholder="Código CIIU"
+            />
+          </div>
+
+          <div class="company-form__field company-form__field--toggle">
+            <span class="company-form__label">ESTADO DEL CLIENTE</span>
+            <div class="company-form__toggle-row">
+              <label class="company-form__toggle">
+                <input class="company-form__toggle-input" type="checkbox" checked />
+                <span class="company-form__toggle-track"></span>
+              </label>
+              <span class="company-form__toggle-label">ACTIVA</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="company-form__card">
+        <header class="company-form__card-header">
+          <img src="/images/icons/Empresas/Container3.svg" alt="" width="16" height="20" />
+          <h2>Localización</h2>
+        </header>
+
+        <div class="company-form__location">
+          <div class="company-form__location-fields">
+            <div class="company-form__field">
+              <label class="company-form__label" for="country">PAÍS</label>
+              <input id="country" class="company-form__input" type="text" value="Colombia" />
+            </div>
+
+            <div class="company-form__fields company-form__fields--two-columns">
+              <div class="company-form__field">
+                <label class="company-form__label" for="department">DEPARTAMENTO</label>
+                <input id="department" class="company-form__input" type="text" value="Antioquia" />
+              </div>
+              <div class="company-form__field">
+                <label class="company-form__label" for="city">CIUDAD</label>
+                <input id="city" class="company-form__input" type="text" value="Medellín" />
+              </div>
+            </div>
+
+            <div class="company-form__field">
+              <label class="company-form__label" for="address">DIRECCIÓN FÍSICA</label>
+              <input
+                id="address"
+                class="company-form__input"
+                type="text"
+                placeholder="Calle, Carrera, Edificio, Oficina"
+              />
+            </div>
+
+            <div class="company-form__field">
+              <label class="company-form__label" for="postal-code">CÓDIGO POSTAL</label>
+              <input id="postal-code" class="company-form__input" type="text" placeholder="000000" />
+            </div>
+          </div>
+
+          <div class="company-form__map">
+            <div class="company-form__map-preview">
+              <img src="/images/icons/Empresas/Container3.svg" alt="" width="16" height="20" />
+              <p class="company-form__map-title">VISTA PREVIA DEL MAPA</p>
+              <p class="company-form__map-subtitle">Medellín, Antioquia</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="company-form__card">
+        <header class="company-form__card-header">
+          <img src="/images/icons/Empresas/Container1.svg" alt="" width="20" height="18" />
+          <h2>Notas Internas</h2>
+        </header>
+
+        <div class="company-form__field">
+          <textarea
+            id="internal-notes"
+            class="company-form__textarea"
+            rows="5"
+            placeholder="Ingrese comentarios adicionales sobre la empresa o requerimientos especiales de facturación..."
+          ></textarea>
+        </div>
+
+        <footer class="company-form__notes-footer">
+          <div class="company-form__avatars" aria-hidden="true">
+            <span class="company-form__avatar">JD</span>
+            <span class="company-form__avatar">MA</span>
+          </div>
+          <p class="company-form__notes-caption">Solo visibles para administradores</p>
+        </footer>
+      </section>
+    </div>
+
+    <aside class="company-form__sidebar">
+      <section class="company-form__card">
+        <header class="company-form__card-header">
+          <img src="/images/icons/Empresas/Icon (2).svg" alt="" width="18" height="18" />
+          <h2>Canales Directos</h2>
+        </header>
+
+        <div class="company-form__stack">
+          <div class="company-form__field">
+            <label class="company-form__label" for="phone">TELÉFONO PRINCIPAL</label>
+            <div class="company-form__input-wrap company-form__input-wrap--prefix">
+              <img
+                class="company-form__prefix-icon"
+                src="/images/icons/Empresas/Icon (2).svg"
+                alt=""
+                width="18"
+                height="18"
+              />
+              <input id="phone" class="company-form__input" type="text" value="+57 604 444 0000" />
+            </div>
+          </div>
+
+          <div class="company-form__field">
+            <label class="company-form__label" for="email">CORREO CORPORATIVO</label>
+            <div class="company-form__input-wrap company-form__input-wrap--prefix">
+              <img
+                class="company-form__prefix-icon company-form__prefix-icon--error"
+                src="/images/icons/Empresas/Button (1).svg"
+                alt=""
+                width="18"
+                height="18"
+              />
+              <input
+                id="email"
+                class="company-form__input company-form__input--error"
+                type="email"
+                value="contacto@empresa-invalida"
+              />
+            </div>
+            <p class="company-form__feedback company-form__feedback--error">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/>
+                <path d="M7 4.5V7.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                <circle cx="7" cy="9.5" r="0.6" fill="currentColor"/>
+              </svg>
+              Formato de correo no válido
+            </p>
+          </div>
+
+          <div class="company-form__field">
+            <label class="company-form__label" for="website">SITIO WEB</label>
+            <div class="company-form__input-wrap company-form__input-wrap--prefix">
+              <svg class="company-form__prefix-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                <circle cx="9" cy="9" r="7" stroke="#444651" stroke-width="1.3"/>
+                <path d="M2 9H16M9 2C7 4.5 6 6.5 6 9C6 11.5 7 13.5 9 16M9 2C11 4.5 12 6.5 12 9C12 11.5 11 13.5 9 16" stroke="#444651" stroke-width="1.3"/>
+              </svg>
+              <input id="website" class="company-form__input" type="url" value="https://www.ultrahealth.com" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="company-form__card">
+        <header class="company-form__card-header">
+          <img src="/images/icons/Empresas/Container2.svg" alt="" width="24" height="18" />
+          <h2>Representante</h2>
+        </header>
+
+        <article class="company-form__representative">
+          <img
+            class="company-form__representative-avatar"
+            src="/images/illustrations/companies/representative-carlos-restrepo.svg"
+            alt=""
+            width="48"
+            height="48"
+          />
+          <div>
+            <p class="company-form__representative-name">Carlos Mario Restrepo</p>
+            <p class="company-form__representative-role">Director de Operaciones</p>
+            <p class="company-form__representative-contact">
+              <img src="/images/icons/Empresas/Button (1).svg" alt="" width="14" height="14" />
+              carlos.restrepo@empresa.com
+            </p>
+            <p class="company-form__representative-contact">
+              <img src="/images/icons/Empresas/Icon (2).svg" alt="" width="14" height="14" />
+              +57 300 123 4567
+            </p>
+          </div>
+        </article>
+
+        <button class="company-form__add-representative" type="button">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M7 1V13M1 7H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          AÑADIR REPRESENTANTE ADICIONAL
+        </button>
+      </section>
+
+      <section class="company-form__card">
+        <header class="company-form__card-header">
+          <img src="/images/icons/Empresas/Icon.svg" alt="" width="16" height="20" />
+          <h2>Convenio Comercial</h2>
+        </header>
+
+        <div class="company-form__stack">
+          <div class="company-form__fields company-form__fields--two-columns">
+            <div class="company-form__field">
+              <label class="company-form__label" for="start-date">FECHA INICIO</label>
+              <input id="start-date" class="company-form__input" type="text" value="01/01/2023" />
+            </div>
+            <div class="company-form__field">
+              <label class="company-form__label" for="end-date">VENCIMIENTO</label>
+              <input id="end-date" class="company-form__input" type="text" value="12/31/2024" />
+            </div>
+          </div>
+
+          <div class="company-form__field">
+            <label class="company-form__label" for="agreement-notes">OBSERVACIONES DE CONVENIO</label>
+            <textarea
+              id="agreement-notes"
+              class="company-form__textarea company-form__textarea--compact"
+              rows="3"
+              placeholder="Detalles de facturación, descuentos..."
+            ></textarea>
+          </div>
+
+          <div class="company-form__alert">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/>
+              <path d="M8 5V8.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+              <circle cx="8" cy="11" r="0.6" fill="currentColor"/>
+            </svg>
+            <p>
+              El convenio está próximo a vencer en 64 días. Se recomienda iniciar trámite de
+              renovación.
+            </p>
+          </div>
+        </div>
+      </section>
+    </aside>
+  </div>
+
+  <footer class="company-form__footer">
+    <p class="company-form__autosave">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M8 2V8L11 11" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+        <circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.3"/>
+      </svg>
+      Auto-guardado activo (hace 2 min)
+    </p>
+
+    <div class="company-form__actions">
+      <a class="company-form__button company-form__button--ghost" routerLink="/companies">CANCELAR</a>
+      <button class="company-form__button company-form__button--secondary" type="button">
+        GUARDAR Y CONTINUAR
+      </button>
+      <button class="company-form__button company-form__button--primary" type="button">
+        GUARDAR CAMBIOS
+      </button>
+    </div>
+  </footer>
+</section>

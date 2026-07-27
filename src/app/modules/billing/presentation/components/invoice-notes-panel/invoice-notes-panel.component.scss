@@ -1,0 +1,47 @@
+.invoice-notes-panel {
+  padding: 24px;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.invoice-notes-panel__title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 16px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  color: #111827;
+}
+
+.invoice-notes-panel__textarea {
+  width: 100%;
+  min-height: 112px;
+  padding: 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #f4f8fc;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #334155;
+  resize: vertical;
+  outline: none;
+
+  &::placeholder {
+    color: #94a3b8;
+  }
+}
+
+.invoice-notes-panel__hint {
+  margin: 10px 0 0;
+  font-size: 0.75rem;
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #94a3b8;
+}

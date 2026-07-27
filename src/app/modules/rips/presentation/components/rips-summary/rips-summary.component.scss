@@ -1,0 +1,138 @@
+.rips-summary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.rips-summary__card,
+.rips-summary__action-card {
+  min-height: 132px;
+  padding: 20px;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.rips-summary__card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.rips-summary__label {
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: #64748b;
+}
+
+.rips-summary__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.rips-summary__icon--muted {
+  color: #cbd5e1;
+}
+
+.rips-summary__icon--danger {
+  color: #fca5a5;
+}
+
+.rips-summary__value {
+  margin: 0 0 12px;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.rips-summary__value--primary {
+  color: #00236f;
+}
+
+.rips-summary__value--danger {
+  color: #dc2626;
+}
+
+.rips-summary__progress {
+  height: 4px;
+  border-radius: 999px;
+  background: #eef1f6;
+  overflow: hidden;
+
+  span {
+    display: block;
+    width: 68%;
+    height: 100%;
+    border-radius: inherit;
+    background: #0058be;
+  }
+}
+
+.rips-summary__link {
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #0058be;
+  cursor: pointer;
+}
+
+.rips-summary__action-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border: 1px solid #dbeafe;
+  text-align: left;
+  cursor: pointer;
+  background: #f8fbff;
+
+  strong {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #00236f;
+  }
+
+  small {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1.3;
+    color: #64748b;
+  }
+}
+
+.rips-summary__action-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: #eef4ff;
+  color: #0058be;
+  flex-shrink: 0;
+}
+
+@media (max-width: 1100px) {
+  .rips-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .rips-summary {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,105 @@
+<section class="invoice-items-table">
+  <header class="invoice-items-table__header">
+    <h2 class="invoice-items-table__title">Conceptos y Servicios</h2>
+    <button class="invoice-items-table__add" type="button" (click)="addItem()">+ AGREGAR ITEM</button>
+  </header>
+
+  <div class="invoice-items-table__wrap">
+    <table class="invoice-items-table__table">
+      <thead>
+        <tr>
+          <th>DESCRIPCIÓN DEL SERVICIO</th>
+          <th>CANT.</th>
+          <th>PRECIO UNIT.</th>
+          <th>DESC %</th>
+          <th>IVA %</th>
+          <th>TOTAL</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of items(); track item.id) {
+          <tr>
+            <td>
+              <input
+                class="invoice-items-table__input invoice-items-table__input--service"
+                type="text"
+                [value]="item.serviceName"
+                (input)="updateItem(item.id, 'serviceName', $event)"
+              />
+              <input
+                class="invoice-items-table__input invoice-items-table__input--code"
+                type="text"
+                [value]="item.serviceCode"
+                (input)="updateItem(item.id, 'serviceCode', $event)"
+              />
+            </td>
+            <td>
+              <input
+                class="invoice-items-table__input invoice-items-table__input--number"
+                type="number"
+                min="1"
+                [value]="item.quantity"
+                (input)="updateItem(item.id, 'quantity', $event)"
+              />
+            </td>
+            <td>
+              <input
+                class="invoice-items-table__input invoice-items-table__input--number"
+                type="number"
+                min="0"
+                [value]="item.unitPrice"
+                (input)="updateItem(item.id, 'unitPrice', $event)"
+              />
+            </td>
+            <td>
+              <input
+                class="invoice-items-table__input invoice-items-table__input--number"
+                [class.invoice-items-table__input--discount]="item.discountPercent > 0"
+                type="number"
+                min="0"
+                max="100"
+                [value]="item.discountPercent"
+                (input)="updateItem(item.id, 'discountPercent', $event)"
+              />
+            </td>
+            <td>
+              <input
+                class="invoice-items-table__input invoice-items-table__input--number"
+                type="number"
+                min="0"
+                max="100"
+                [value]="item.ivaPercent"
+                (input)="updateItem(item.id, 'ivaPercent', $event)"
+              />
+            </td>
+            <td class="invoice-items-table__total">{{ formatTotal(item) }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <footer class="invoice-items-table__footer">
+    <div class="invoice-items-table__links">
+      <button class="invoice-items-table__link" type="button" (click)="loadFromAgenda.emit()">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.3"/>
+          <path d="M8 5V8.5L10 10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+        </svg>
+        Cargar servicios desde Agenda
+      </button>
+      <button class="invoice-items-table__link" type="button" (click)="importExcel.emit()">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M8 2.5V10.5M5.5 8H10.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+          <path d="M3 12.5H13" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+        </svg>
+        Importar Excel
+      </button>
+    </div>
+    <button class="invoice-items-table__delete" type="button" aria-label="Eliminar último item" (click)="removeLastItem()">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+        <path d="M3.5 5H14.5M6 5V3.5H12V5M6.5 8V13M9 8V13M11.5 8V13M5 5L5.8 14.5H12.2L13 5" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
+      </svg>
+    </button>
+  </footer>
+</section>

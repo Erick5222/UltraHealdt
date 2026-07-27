@@ -1,0 +1,96 @@
+:host {
+  display: block;
+}
+
+.medical-history-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 20px 28px;
+  border: 1px solid #eef1f6;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.medical-history-header__eyebrow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.medical-history-header__code {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: #00236f;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  color: #ffffff;
+}
+
+.medical-history-header__label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.medical-history-header__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.medical-history-header__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 44px;
+  padding: 0 18px;
+  border-radius: 10px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.medical-history-header__button--primary {
+  border: none;
+  background: #00236f;
+  color: #ffffff;
+}
+
+.medical-history-header__button--ghost {
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  color: #475569;
+}
+
+@media (max-width: 768px) {
+  .medical-history-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .medical-history-header__actions {
+    flex-direction: column;
+  }
+
+  .medical-history-header__button {
+    width: 100%;
+  }
+}

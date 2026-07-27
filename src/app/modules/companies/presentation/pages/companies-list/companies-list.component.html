@@ -1,0 +1,644 @@
+<section class="companies-list">
+  <header class="companies-list__header">
+    <div class="companies-list__intro">
+      <p class="companies-list__eyebrow">
+        @if (viewMode() === 'cards') {
+          <img
+            class="companies-list__eyebrow-icon"
+            src="/images/icons/Empresas/modulo adm.svg"
+            alt=""
+            width="17"
+            height="15"
+          />
+          <span>MÓDULO ADMINISTRATIVO</span>
+        } @else {
+          <img
+            class="companies-list__eyebrow-icon"
+            src="/images/icons/Navigation/companies.svg"
+            alt=""
+            width="17"
+            height="15"
+          />
+          <span>GESTIÓN DE PORTAFOLIO</span>
+        }
+      </p>
+      <h1 class="companies-list__title">Clientes Empresariales</h1>
+    </div>
+
+    <a class="companies-list__new-button" routerLink="/companies/new">+ NUEVA EMPRESA</a>
+  </header>
+
+  @if (viewMode() === 'list') {
+    <section class="companies-list__summary" aria-label="Resumen de clientes">
+      <article class="companies-list__summary-card">
+        <div class="companies-list__summary-icon companies-list__summary-icon--primary">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path
+              d="M3 17V8L10 3L17 8V17H12V12H8V17H3Z"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+        <div>
+          <p class="companies-list__summary-label">TOTAL CLIENTES</p>
+          <p class="companies-list__summary-value">1,284</p>
+        </div>
+      </article>
+
+      <article class="companies-list__summary-card">
+        <div class="companies-list__summary-icon companies-list__summary-icon--success">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path
+              d="M4 10.5L8 14.5L16 6.5"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+        <div>
+          <p class="companies-list__summary-label">ACTIVOS</p>
+          <p class="companies-list__summary-value">1,102</p>
+        </div>
+      </article>
+
+      <article class="companies-list__summary-card">
+        <div class="companies-list__summary-icon companies-list__summary-icon--warning">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <rect x="4" y="3" width="12" height="14" rx="2" stroke="currentColor" stroke-width="1.5" />
+            <path d="M7 8H13M7 11H13M7 14H10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+          </svg>
+        </div>
+        <div>
+          <p class="companies-list__summary-label">POR VENCER</p>
+          <p class="companies-list__summary-value">45</p>
+        </div>
+      </article>
+
+      <article class="companies-list__summary-card">
+        <div class="companies-list__summary-icon companies-list__summary-icon--danger">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path
+              d="M10 3L18 17H2L10 3Z"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linejoin="round"
+            />
+            <path d="M10 8V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+            <circle cx="10" cy="15" r="0.75" fill="currentColor" />
+          </svg>
+        </div>
+        <div>
+          <p class="companies-list__summary-label">SUSPENDIDOS</p>
+          <p class="companies-list__summary-value">18</p>
+        </div>
+      </article>
+    </section>
+  }
+
+  <section class="companies-list__toolbar">
+    <label class="companies-list__search">
+      <svg class="companies-list__search-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+        <circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.5" />
+        <path d="M12.5 12.5L16 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+      </svg>
+      <input
+        class="companies-list__search-input"
+        type="search"
+        placeholder="Buscar por Nombre, NIT, Ciudad o Contacto..."
+      />
+    </label>
+
+    <div class="companies-list__status-tabs" role="tablist" aria-label="Estado de empresas">
+      <button class="companies-list__status-tab companies-list__status-tab--active" type="button">Todas</button>
+      <button class="companies-list__status-tab" type="button">Activas</button>
+      <button class="companies-list__status-tab" type="button">Suspendidas</button>
+    </div>
+
+    @if (viewMode() === 'cards') {
+      <button class="companies-list__filters-button" type="button">
+        <img src="/images/icons/Empresas/filtros.svg" alt="" width="18" height="12" />
+        <span>Filtros</span>
+      </button>
+    }
+
+    <div class="companies-list__view-toggle" role="group" aria-label="Tipo de vista">
+      <button
+        class="companies-list__view-button"
+        [class.companies-list__view-button--active]="viewMode() === 'cards'"
+        type="button"
+        aria-label="Vista tarjetas"
+        (click)="setViewMode('cards')"
+      >
+        <img src="/images/icons/Empresas/tarjetas.svg" alt="" width="15" height="15" />
+      </button>
+      <button
+        class="companies-list__view-button"
+        [class.companies-list__view-button--active]="viewMode() === 'list'"
+        type="button"
+        aria-label="Vista lista"
+        (click)="setViewMode('list')"
+      >
+        <img src="/images/icons/Empresas/listas.svg" alt="" width="15" height="15" />
+      </button>
+    </div>
+
+    @if (viewMode() === 'list') {
+      <button class="companies-list__filters-icon-button" type="button" aria-label="Filtros">
+        <img src="/images/icons/Empresas/filtros.svg" alt="" width="18" height="12" />
+      </button>
+    }
+  </section>
+
+  @if (viewMode() === 'cards') {
+    <section class="companies-list__cards">
+      <article class="companies-list__card">
+        <header class="companies-list__card-header">
+          <img
+            class="companies-list__card-logo"
+            src="/images/illustrations/companies/logo-logistica-global.svg"
+            alt=""
+            width="40"
+            height="40"
+          />
+          <div class="companies-list__card-heading">
+            <h2 class="companies-list__card-name">Logística Global S.A.S.</h2>
+            <p class="companies-list__card-nit">NIT 900.123.456-7</p>
+          </div>
+          <uh-company-actions-menu companyId="1" status="active" />
+        </header>
+
+        <div class="companies-list__card-meta">
+          <span class="companies-list__badge companies-list__badge--active">ACTIVA</span>
+          <span class="companies-list__location">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path
+                d="M6 1C4.067 1 2.5 2.567 2.5 4.5C2.5 6.75 6 11 6 11C6 11 9.5 6.75 9.5 4.5C9.5 2.567 7.933 1 6 1Z"
+                stroke="currentColor"
+                stroke-width="1.2"
+              />
+              <circle cx="6" cy="4.5" r="1.2" fill="currentColor" />
+            </svg>
+            Bogotá, D.C.
+          </span>
+        </div>
+
+        <div class="companies-list__card-grid">
+          <div>
+            <p class="companies-list__card-label">EMPLEADOS</p>
+            <p class="companies-list__card-value">1,240 registros</p>
+          </div>
+          <div>
+            <p class="companies-list__card-label">CONVENIO</p>
+            <p class="companies-list__card-value companies-list__card-value--success">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2" />
+                <path d="M4.5 7L6.2 8.7L9.5 5.4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              Vigente (Platino)
+            </p>
+          </div>
+          <div>
+            <p class="companies-list__card-label">CONTACTO PRINCIPAL</p>
+            <p class="companies-list__card-value">Beatriz Moreno</p>
+          </div>
+          <div>
+            <p class="companies-list__card-label">VENCIMIENTO</p>
+            <p class="companies-list__card-value">15 Oct 2025</p>
+          </div>
+        </div>
+
+        <footer class="companies-list__card-footer">
+          <a
+            class="companies-list__card-action companies-list__card-action--primary"
+            routerLink="/companies/1/edit"
+          >
+            VER EXPEDIENTE
+          </a>
+          <button class="companies-list__card-action companies-list__card-action--secondary" type="button" aria-label="Enviar correo">
+            <img src="/images/icons/Empresas/Button (1).svg" alt="" width="38" height="40" />
+          </button>
+        </footer>
+      </article>
+
+      <article class="companies-list__card">
+        <header class="companies-list__card-header">
+          <img
+            class="companies-list__card-logo"
+            src="/images/illustrations/companies/logo-distribuidora-andina.svg"
+            alt=""
+            width="40"
+            height="40"
+          />
+          <div class="companies-list__card-heading">
+            <h2 class="companies-list__card-name">Distribuidora Andina Ltda.</h2>
+            <p class="companies-list__card-nit">NIT 890.987.654-3</p>
+          </div>
+          <uh-company-actions-menu companyId="2" status="active" />
+        </header>
+
+        <div class="companies-list__card-meta">
+          <span class="companies-list__badge companies-list__badge--active">ACTIVA</span>
+          <span class="companies-list__location">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path
+                d="M6 1C4.067 1 2.5 2.567 2.5 4.5C2.5 6.75 6 11 6 11C6 11 9.5 6.75 9.5 4.5C9.5 2.567 7.933 1 6 1Z"
+                stroke="currentColor"
+                stroke-width="1.2"
+              />
+              <circle cx="6" cy="4.5" r="1.2" fill="currentColor" />
+            </svg>
+            Medellín
+          </span>
+        </div>
+
+        <div class="companies-list__card-grid">
+          <div>
+            <p class="companies-list__card-label">EMPLEADOS</p>
+            <p class="companies-list__card-value">450 registros</p>
+          </div>
+          <div>
+            <p class="companies-list__card-label">CONVENIO</p>
+            <p class="companies-list__card-value companies-list__card-value--success">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2" />
+                <path d="M4.5 7L6.2 8.7L9.5 5.4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              Vigente (Oro)
+            </p>
+          </div>
+          <div>
+            <p class="companies-list__card-label">CONTACTO PRINCIPAL</p>
+            <p class="companies-list__card-value">Juan Pablo Ríos</p>
+          </div>
+          <div>
+            <p class="companies-list__card-label">VENCIMIENTO</p>
+            <p class="companies-list__card-value">20 Nov 2025</p>
+          </div>
+        </div>
+
+        <footer class="companies-list__card-footer">
+          <a
+            class="companies-list__card-action companies-list__card-action--primary"
+            routerLink="/companies/2/edit"
+          >
+            VER EXPEDIENTE
+          </a>
+          <button class="companies-list__card-action companies-list__card-action--secondary" type="button" aria-label="Llamar">
+            <img src="/images/icons/Empresas/Icon (2).svg" alt="" width="18" height="18" />
+          </button>
+        </footer>
+      </article>
+
+      <article class="companies-list__card">
+        <header class="companies-list__card-header">
+          <img
+            class="companies-list__card-logo"
+            src="/images/illustrations/companies/logo-servicios-mineros.svg"
+            alt=""
+            width="40"
+            height="40"
+          />
+          <div class="companies-list__card-heading">
+            <h2 class="companies-list__card-name">Servicios Mineros del Sur</h2>
+            <p class="companies-list__card-nit">NIT 901.555.444-2</p>
+          </div>
+          <uh-company-actions-menu companyId="3" status="suspended" />
+        </header>
+
+        <div class="companies-list__card-meta">
+          <span class="companies-list__badge companies-list__badge--suspended">SUSPENDIDA</span>
+          <span class="companies-list__location">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path
+                d="M6 1C4.067 1 2.5 2.567 2.5 4.5C2.5 6.75 6 11 6 11C6 11 9.5 6.75 9.5 4.5C9.5 2.567 7.933 1 6 1Z"
+                stroke="currentColor"
+                stroke-width="1.2"
+              />
+              <circle cx="6" cy="4.5" r="1.2" fill="currentColor" />
+            </svg>
+            Cali
+          </span>
+        </div>
+
+        <div class="companies-list__card-grid">
+          <div>
+            <p class="companies-list__card-label">EMPLEADOS</p>
+            <p class="companies-list__card-value">85 registros</p>
+          </div>
+          <div>
+            <p class="companies-list__card-label">CONVENIO</p>
+            <p class="companies-list__card-value companies-list__card-value--danger">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2" />
+                <path d="M7 4.5V7.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+                <circle cx="7" cy="9.5" r="0.6" fill="currentColor" />
+              </svg>
+              Vencido
+            </p>
+          </div>
+          <div>
+            <p class="companies-list__card-label">CONTACTO PRINCIPAL</p>
+            <p class="companies-list__card-value">Ana María Castro</p>
+          </div>
+          <div>
+            <p class="companies-list__card-label">ÚLTIMA ACTIVIDAD</p>
+            <p class="companies-list__card-value">Hace 12 días</p>
+          </div>
+        </div>
+
+        <footer class="companies-list__card-footer">
+          <a
+            class="companies-list__card-action companies-list__card-action--primary"
+            routerLink="/companies/3/edit"
+          >
+            GESTIONAR MORA
+          </a>
+          <button class="companies-list__card-action companies-list__card-action--secondary" type="button" aria-label="Ver reporte">
+            <img src="/images/icons/Empresas/Container.svg" alt="" width="18" height="18" />
+          </button>
+        </footer>
+      </article>
+
+      <article class="companies-list__card">
+        <header class="companies-list__card-header">
+          <img
+            class="companies-list__card-logo"
+            src="/images/illustrations/companies/logo-tecnologias-avanzadas.svg"
+            alt=""
+            width="40"
+            height="40"
+          />
+          <div class="companies-list__card-heading">
+            <h2 class="companies-list__card-name">Tecnologías Avanzadas S.A.</h2>
+            <p class="companies-list__card-nit">NIT 800.111.222-1</p>
+          </div>
+          <uh-company-actions-menu companyId="4" status="suspended" />
+        </header>
+
+        <div class="companies-list__card-meta">
+          <span class="companies-list__badge companies-list__badge--suspended">SUSPENDIDA</span>
+          <span class="companies-list__location">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path
+                d="M6 1C4.067 1 2.5 2.567 2.5 4.5C2.5 6.75 6 11 6 11C6 11 9.5 6.75 9.5 4.5C9.5 2.567 7.933 1 6 1Z"
+                stroke="currentColor"
+                stroke-width="1.2"
+              />
+              <circle cx="6" cy="4.5" r="1.2" fill="currentColor" />
+            </svg>
+            Barranquilla
+          </span>
+        </div>
+
+        <div class="companies-list__card-grid">
+          <div>
+            <p class="companies-list__card-label">EMPLEADOS</p>
+            <p class="companies-list__card-value">12 registros</p>
+          </div>
+          <div>
+            <p class="companies-list__card-label">CONVENIO</p>
+            <p class="companies-list__card-value companies-list__card-value--danger">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2" />
+                <path d="M7 4.5V7.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+                <circle cx="7" cy="9.5" r="0.6" fill="currentColor" />
+              </svg>
+              Vencido
+            </p>
+          </div>
+          <div>
+            <p class="companies-list__card-label">CONTACTO PRINCIPAL</p>
+            <p class="companies-list__card-value">Luis Fernando Ortiz</p>
+          </div>
+          <div>
+            <p class="companies-list__card-label">ÚLTIMA ACTIVIDAD</p>
+            <p class="companies-list__card-value">Hace 45 días</p>
+          </div>
+        </div>
+
+        <footer class="companies-list__card-footer">
+          <a
+            class="companies-list__card-action companies-list__card-action--primary"
+            routerLink="/companies/4/edit"
+          >
+            GESTIONAR MORA
+          </a>
+          <button class="companies-list__card-action companies-list__card-action--secondary" type="button" aria-label="Ver reporte">
+            <img src="/images/icons/Empresas/Container.svg" alt="" width="18" height="18" />
+          </button>
+        </footer>
+      </article>
+    </section>
+  } @else {
+    <section class="companies-list__table-wrap">
+      <table class="companies-list__table">
+        <thead>
+          <tr>
+            <th>LOGO &amp; EMPRESA</th>
+            <th>ESTADO</th>
+            <th>CIUDAD</th>
+            <th>EMPLEADOS</th>
+            <th>CONVENIO</th>
+            <th>VENCIMIENTO</th>
+            <th>ACCIONES</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="companies-list__table-company">
+                <img
+                  src="/images/illustrations/companies/logo-logistica-global.svg"
+                  alt=""
+                  width="36"
+                  height="36"
+                />
+                <div>
+                  <p class="companies-list__table-name">Logística Global S.A.S.</p>
+                  <p class="companies-list__table-nit">NIT 900.123.456-7</p>
+                </div>
+              </div>
+            </td>
+            <td>
+              <span class="companies-list__table-status companies-list__table-status--active">
+                <span class="companies-list__table-status-dot"></span>
+                ACTIVA
+              </span>
+            </td>
+            <td>Bogotá, D.C.</td>
+            <td>
+              <div class="companies-list__table-employees">
+                <span>1,240 registros</span>
+                <span class="companies-list__progress">
+                  <span class="companies-list__progress-bar companies-list__progress-bar--high"></span>
+                </span>
+              </div>
+            </td>
+            <td>
+              <span class="companies-list__table-agreement companies-list__table-agreement--platinum">
+                <span class="companies-list__table-agreement-icon"></span>
+                Platino (Vigente)
+              </span>
+            </td>
+            <td>15 Oct 2025</td>
+            <td>
+              <div class="companies-list__table-actions">
+                <a class="companies-list__table-action" routerLink="/companies/1/edit">Ver Expediente</a>
+                <uh-company-actions-menu companyId="1" status="active" placement="top" />
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="companies-list__table-company">
+                <img
+                  src="/images/illustrations/companies/logo-distribuidora-andina.svg"
+                  alt=""
+                  width="36"
+                  height="36"
+                />
+                <div>
+                  <p class="companies-list__table-name">Distribuidora Andina Ltda.</p>
+                  <p class="companies-list__table-nit">NIT 890.987.654-3</p>
+                </div>
+              </div>
+            </td>
+            <td>
+              <span class="companies-list__table-status companies-list__table-status--active">
+                <span class="companies-list__table-status-dot"></span>
+                ACTIVA
+              </span>
+            </td>
+            <td>Medellín</td>
+            <td>
+              <div class="companies-list__table-employees">
+                <span>450 registros</span>
+                <span class="companies-list__progress">
+                  <span class="companies-list__progress-bar companies-list__progress-bar--medium"></span>
+                </span>
+              </div>
+            </td>
+            <td>
+              <span class="companies-list__table-agreement companies-list__table-agreement--gold">
+                <span class="companies-list__table-agreement-icon"></span>
+                Oro (Vigente)
+              </span>
+            </td>
+            <td>20 Nov 2025</td>
+            <td>
+              <div class="companies-list__table-actions">
+                <a class="companies-list__table-action" routerLink="/companies/2/edit">Ver Expediente</a>
+                <uh-company-actions-menu companyId="2" status="active" placement="top" />
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="companies-list__table-company">
+                <img
+                  src="/images/illustrations/companies/logo-servicios-mineros.svg"
+                  alt=""
+                  width="36"
+                  height="36"
+                />
+                <div>
+                  <p class="companies-list__table-name">Servicios Mineros del Sur</p>
+                  <p class="companies-list__table-nit">NIT 901.555.444-2</p>
+                </div>
+              </div>
+            </td>
+            <td>
+              <span class="companies-list__table-status companies-list__table-status--suspended">
+                <span class="companies-list__table-status-dot"></span>
+                SUSPENDIDA
+              </span>
+            </td>
+            <td>Cali</td>
+            <td>
+              <div class="companies-list__table-employees">
+                <span>85 registros</span>
+                <span class="companies-list__progress">
+                  <span class="companies-list__progress-bar companies-list__progress-bar--low"></span>
+                </span>
+              </div>
+            </td>
+            <td>
+              <span class="companies-list__table-agreement companies-list__table-agreement--expired">
+                <span class="companies-list__table-agreement-icon"></span>
+                Vencido
+              </span>
+            </td>
+            <td class="companies-list__table-date--danger">05 Sep 2025</td>
+            <td>
+              <div class="companies-list__table-actions">
+                <a class="companies-list__table-action" routerLink="/companies/3/edit">Ver Expediente</a>
+                <uh-company-actions-menu companyId="3" status="suspended" placement="top" />
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="companies-list__table-company">
+                <img
+                  src="/images/illustrations/companies/logo-tecnologias-avanzadas.svg"
+                  alt=""
+                  width="36"
+                  height="36"
+                />
+                <div>
+                  <p class="companies-list__table-name">Tecnologías Avanzadas S.A.</p>
+                  <p class="companies-list__table-nit">NIT 800.111.222-1</p>
+                </div>
+              </div>
+            </td>
+            <td>
+              <span class="companies-list__table-status companies-list__table-status--suspended">
+                <span class="companies-list__table-status-dot"></span>
+                SUSPENDIDA
+              </span>
+            </td>
+            <td>Barranquilla</td>
+            <td>
+              <div class="companies-list__table-employees">
+                <span>12 registros</span>
+                <span class="companies-list__progress">
+                  <span class="companies-list__progress-bar companies-list__progress-bar--minimal"></span>
+                </span>
+              </div>
+            </td>
+            <td>
+              <span class="companies-list__table-agreement companies-list__table-agreement--basic">
+                <span class="companies-list__table-agreement-icon"></span>
+                Básico (Vigente)
+              </span>
+            </td>
+            <td>30 Ene 2026</td>
+            <td>
+              <div class="companies-list__table-actions">
+                <a class="companies-list__table-action" routerLink="/companies/4/edit">Ver Expediente</a>
+                <uh-company-actions-menu companyId="4" status="suspended" placement="top" />
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <footer class="companies-list__pagination">
+        <p class="companies-list__pagination-info">Mostrando 1 - 4 de 1,284 empresas</p>
+        <nav class="companies-list__pagination-nav" aria-label="Paginación">
+          <button class="companies-list__pagination-button" type="button" aria-label="Página anterior">&lt;</button>
+          <button class="companies-list__pagination-page companies-list__pagination-page--active" type="button">1</button>
+          <button class="companies-list__pagination-page" type="button">2</button>
+          <button class="companies-list__pagination-page" type="button">3</button>
+          <span class="companies-list__pagination-ellipsis">...</span>
+          <button class="companies-list__pagination-page" type="button">322</button>
+          <button class="companies-list__pagination-button" type="button" aria-label="Página siguiente">&gt;</button>
+        </nav>
+      </footer>
+    </section>
+  }
+</section>

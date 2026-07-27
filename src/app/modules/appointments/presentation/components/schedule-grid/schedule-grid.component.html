@@ -1,0 +1,101 @@
+@if (viewMode() === 'month') {
+  <section class="schedule-month">
+    <div class="schedule-month__weekdays">
+      <span>Lun</span>
+      <span>Mar</span>
+      <span>Mié</span>
+      <span>Jue</span>
+      <span>Vie</span>
+      <span>Sáb</span>
+      <span>Dom</span>
+    </div>
+
+    <div class="schedule-month__grid">
+      @for (cell of monthCells(); track cell.iso) {
+        <button
+          class="schedule-month__cell"
+          [ngClass]="monthCellClass(cell)"
+          type="button"
+          [disabled]="!cell.hasAppointments"
+          (click)="onMonthCellClick(cell)"
+        >
+          <span class="schedule-month__day">{{ cell.dayNumber }}</span>
+          @if (cell.hasAppointments) {
+            <span class="schedule-month__count">{{ cell.appointmentCount }} cita(s)</span>
+          }
+        </button>
+      }
+    </div>
+  </section>
+} @else {
+  <section class="schedule-grid">
+    <div
+      class="schedule-grid__header"
+      [style.gridTemplateColumns]="'64px repeat(' + visibleDays().length + ', minmax(0, 1fr))'"
+    >
+      <div class="schedule-grid__time-spacer" aria-hidden="true"></div>
+      @for (day of visibleDays(); track day.iso) {
+        <button
+          class="schedule-grid__day"
+          [class.schedule-grid__day--active]="day.isToday"
+          [class.schedule-grid__day--booked]="appointmentsForDay(day.iso).length > 0"
+          type="button"
+          (click)="onDayHeaderClick(day)"
+        >
+          {{ day.label }}
+        </button>
+      }
+    </div>
+
+    <div class="schedule-grid__body">
+      <div class="schedule-grid__times">
+        @for (hour of hourLabels; track hour) {
+          <span>{{ hour }}</span>
+        }
+      </div>
+
+      <div
+        class="schedule-grid__columns"
+        [style.gridTemplateColumns]="'repeat(' + visibleDays().length + ', minmax(0, 1fr))'"
+      >
+        @for (day of visibleDays(); track day.iso) {
+          <div class="schedule-grid__column" [class.schedule-grid__column--active]="day.isToday">
+            @for (appointment of appointmentsForDay(day.iso); track appointment.id) {
+              <div
+                class="schedule-grid__appointment"
+                [class.schedule-grid__appointment--selected]="isSelected(appointment.id)"
+                [style.top.px]="appointmentTop(appointment)"
+                [style.height.px]="appointmentHeight(appointment)"
+              >
+                <uh-appointment-card
+                  [variant]="appointment.variant"
+                  [displayMode]="appointmentDisplayMode(appointment)"
+                  [selected]="isSelected(appointment.id)"
+                  (select)="appointmentSelect.emit(appointment)"
+                >
+                  <span
+                    class="appointment-card__status-dot appointment-card__status-dot--{{ appointment.variant }}"
+                    [attr.aria-label]="appointment.statusLabel"
+                  ></span>
+
+                  @if (appointmentDisplayMode(appointment) === 'compact') {
+                    <p class="appointment-card__row appointment-card__row--primary">
+                      <span class="appointment-card__label">Paciente:</span>
+                      {{ appointment.patientName }}
+                    </p>
+                  } @else {
+                    <p class="appointment-card__row appointment-card__row--primary">
+                      <span class="appointment-card__label">Paciente:</span>
+                      {{ appointment.patientName }}
+                    </p>
+                    <p class="appointment-card__row appointment-card__row--exam">{{ appointment.examType }}</p>
+                  }
+                </uh-appointment-card>
+              </div>
+            }
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+}

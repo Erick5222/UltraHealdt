@@ -1,0 +1,112 @@
+:host {
+  display: block;
+}
+
+.consultation-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 28px 32px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #00236f 0%, #003d99 100%);
+  color: #ffffff;
+}
+
+.consultation-header__eyebrow {
+  margin: 0 0 8px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.consultation-header__title {
+  margin: 0 0 16px;
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.consultation-header__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.consultation-header__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+
+  svg {
+    flex-shrink: 0;
+    opacity: 0.9;
+  }
+}
+
+.consultation-header__evaluation {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.consultation-header__evaluation-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.consultation-header__evaluation-button {
+  height: 44px;
+  padding: 0 20px;
+  border: none;
+  border-radius: 10px;
+  background: #0058be;
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #ffffff;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .consultation-header {
+    flex-direction: column;
+    padding: 24px 20px;
+  }
+
+  .consultation-header__evaluation {
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .consultation-header__evaluation-button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .consultation-header__title {
+    font-size: 1.375rem;
+  }
+
+  .consultation-header__chip {
+    width: 100%;
+  }
+}

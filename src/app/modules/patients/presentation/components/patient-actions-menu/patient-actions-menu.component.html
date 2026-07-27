@@ -1,0 +1,27 @@
+<div class="patient-actions-menu">
+  <button
+    class="patient-actions-menu__trigger"
+    type="button"
+    aria-label="Más opciones"
+    [attr.aria-expanded]="isOpen()"
+    (click)="toggle($event)"
+  >
+    <img src="/images/icons/Empresas/Button.svg" alt="" width="20" height="38" />
+  </button>
+
+  @if (isOpen()) {
+    <div
+      class="patient-actions-menu__dropdown"
+      [class.patient-actions-menu__dropdown--top]="placement() === 'top'"
+      role="menu"
+      (click)="onMenuClick($event)"
+    >
+      <a class="patient-actions-menu__item" role="menuitem" [routerLink]="viewRoute()">
+        Ver información
+      </a>
+      <a class="patient-actions-menu__item" role="menuitem" [routerLink]="editRoute()">
+        Editar paciente
+      </a>
+    </div>
+  }
+</div>

@@ -1,0 +1,85 @@
+<header class="patient-profile-header">
+  <div class="patient-profile-header__identity">
+    <div class="patient-profile-header__avatar-wrap">
+      <div class="patient-profile-header__avatar" aria-hidden="true">
+        <svg viewBox="0 0 80 80" fill="none">
+          <rect width="80" height="80" fill="#FDE68A"/>
+          <circle cx="40" cy="30" r="14" fill="#F59E0B"/>
+          <path d="M16 72C18 54 28 46 40 46C52 46 62 54 64 72" fill="#EA580C"/>
+          <rect x="24" y="52" width="32" height="20" rx="4" fill="#F97316"/>
+        </svg>
+      </div>
+      <span class="patient-profile-header__avatar-badge" aria-hidden="true">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <circle cx="7" cy="7" r="7" fill="#22C55E"/>
+          <path d="M4 7L6 9L10 5" stroke="white" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+    </div>
+
+    <div class="patient-profile-header__info">
+      <div class="patient-profile-header__title-row">
+        <h1 class="patient-profile-header__name">{{ displayName() }}</h1>
+        <span class="patient-profile-header__role-badge">{{ displayRole() }}</span>
+      </div>
+
+      <div class="patient-profile-header__meta">
+        <p class="patient-profile-header__meta-item">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <rect x="2" y="3" width="12" height="10" rx="2" stroke="currentColor" stroke-width="1.2"/>
+            <circle cx="6" cy="8" r="1.5" stroke="currentColor" stroke-width="1.2"/>
+            <path d="M9 7H12M9 9H11" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+          {{ displayDocument() }}
+        </p>
+        <p class="patient-profile-header__meta-item">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M2 14V4L8 2L14 4V14H2Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+            <path d="M6 14V9H10V14" stroke="currentColor" stroke-width="1.2"/>
+          </svg>
+          {{ displayCompany() }}
+        </p>
+        <p
+          class="patient-profile-header__meta-item patient-profile-header__meta-item--status"
+          [class.patient-profile-header__meta-item--inactive]="!isActive()"
+        >
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M8 2L9.2 5.8H13.2L10 8.2L11.2 12L8 9.6L4.8 12L6 8.2L2.8 5.8H6.8L8 2Z" fill="#0058BE"/>
+          </svg>
+          {{ statusLabel() }}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="patient-profile-header__actions">
+    <a class="patient-profile-header__button patient-profile-header__button--ghost" [routerLink]="editRoute()">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M11.5 2.5L13.5 4.5L5 13H3V11L11.5 2.5Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
+      </svg>
+      Editar
+    </a>
+    <a
+      class="patient-profile-header__button patient-profile-header__button--ghost"
+      [routerLink]="uploadDocumentRoute()"
+      [queryParams]="{ upload: '1' }"
+    >
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M8 2V10M8 10L5.5 7.5M8 10L10.5 7.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M3 12V13.5C3 14.0523 3.44772 14.5 4 14.5H12C12.5523 14.5 13 14.0523 13 13.5V12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+      </svg>
+      Subir Documento
+    </a>
+    <a
+      class="patient-profile-header__button patient-profile-header__button--primary"
+      [routerLink]="newConsultationRoute()"
+      [queryParams]="{ new: '1' }"
+    >
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.3"/>
+        <path d="M8 5V11M5 8H11" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+      </svg>
+      Nueva Consulta Médica
+    </a>
+  </div>
+</header>
