@@ -1,0 +1,16 @@
+:host {
+  display: block;
+}
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 28px 32px 32px;
+}
+
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 20px 16px 24px;
+  }
+}

@@ -1,0 +1,55 @@
+<header class="uh-header">
+  <div class="uh-header__left">
+    <button
+      class="uh-header__icon-button"
+      type="button"
+      aria-label="Abrir menú"
+      (click)="shellLayout.toggleSidebar()"
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M4 7H20M4 12H20M4 17H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+      </svg>
+    </button>
+
+    <a class="uh-header__brand" routerLink="/dashboard">
+      <img
+        class="uh-header__logo"
+        src="/images/icons/Login/Ultra%20Health%20Logo.png"
+        alt="Ultra Health"
+        width="40"
+        height="40"
+      />
+      <span class="uh-header__brand-text">Ultra Health</span>
+    </a>
+  </div>
+
+  <div class="uh-header__actions">
+    <button class="uh-header__icon-button" type="button" aria-label="Buscar">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+        <circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.75" />
+        <path d="M16 16L20 20" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" />
+      </svg>
+    </button>
+
+    <button class="uh-header__icon-button" type="button" aria-label="Notificaciones">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+        <path
+          d="M11 19C12.1 19 13 18.35 13.45 17.25H8.55C9 18.35 9.9 19 11 19ZM16 14.5V10.25C16 7.35 14.35 4.95 11.75 4.05V3.5C11.75 2.53 10.97 1.75 10 1.75C9.03 1.75 8.25 2.53 8.25 3.5V4.05C5.65 4.95 4 7.35 4 10.25V14.5L2.5 16H17.5L16 14.5Z"
+          fill="currentColor"
+        />
+      </svg>
+    </button>
+
+    <button class="uh-header__profile" type="button" aria-label="Perfil de usuario">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <circle cx="10" cy="7" r="3.25" fill="currentColor" />
+        <path
+          d="M4 17.5C4.75 14.75 7.1 13 10 13C12.9 13 15.25 14.75 16 17.5"
+          stroke="currentColor"
+          stroke-width="1.75"
+          stroke-linecap="round"
+        />
+      </svg>
+    </button>
+  </div>
+</header>

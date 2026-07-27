@@ -1,0 +1,119 @@
+:host {
+  display: block;
+}
+
+.dashboard-stat-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 148px;
+  padding: 20px 20px 24px;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+  }
+}
+
+.dashboard-stat-card--accent-primary::after {
+  background: #00236f;
+}
+
+.dashboard-stat-card--accent-secondary::after {
+  background: #0058be;
+}
+
+.dashboard-stat-card--accent-warning::after {
+  background: #c56a2d;
+}
+
+.dashboard-stat-card--accent-muted::after {
+  background: #b8bcc8;
+}
+
+.dashboard-stat-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.dashboard-stat-card__icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+}
+
+.dashboard-stat-card__icon-wrap--primary {
+  background: #eef4ff;
+}
+
+.dashboard-stat-card__icon-wrap--warning {
+  background: #fff3ea;
+}
+
+.dashboard-stat-card__icon-wrap--muted {
+  background: #f3f4f6;
+}
+
+.dashboard-stat-card__icon {
+  display: block;
+  width: 24px;
+  height: auto;
+  max-height: 24px;
+  object-fit: contain;
+}
+
+.dashboard-stat-card__badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.dashboard-stat-card__badge--primary {
+  background: #e8f1ff;
+  color: #0058be;
+}
+
+.dashboard-stat-card__badge--neutral {
+  background: #eef1f6;
+  color: #64748b;
+}
+
+.dashboard-stat-card__badge--urgent {
+  background: #fdecec;
+  color: #dc2626;
+}
+
+.dashboard-stat-card__label {
+  margin: 0 0 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.4;
+  font-size: 18px;
+}
+
+.dashboard-stat-card__value {
+  margin: 0;
+  font-size: clamp(1.75rem, 2vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: #111827;
+}

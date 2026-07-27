@@ -1,0 +1,30 @@
+<article
+  class="dashboard-stat-card"
+  [class.dashboard-stat-card--accent-primary]="accentTone() === 'primary'"
+  [class.dashboard-stat-card--accent-secondary]="accentTone() === 'secondary'"
+  [class.dashboard-stat-card--accent-warning]="accentTone() === 'warning'"
+  [class.dashboard-stat-card--accent-muted]="accentTone() === 'muted'"
+>
+  <div class="dashboard-stat-card__header">
+    <div
+      class="dashboard-stat-card__icon-wrap"
+      [class.dashboard-stat-card__icon-wrap--primary]="iconTone() === 'primary'"
+      [class.dashboard-stat-card__icon-wrap--warning]="iconTone() === 'warning'"
+      [class.dashboard-stat-card__icon-wrap--muted]="iconTone() === 'muted'"
+    >
+      <img class="dashboard-stat-card__icon" [src]="icon()" [alt]="" width="24" height="24" />
+    </div>
+
+    <span
+      class="dashboard-stat-card__badge"
+      [class.dashboard-stat-card__badge--primary]="badgeTone() === 'primary'"
+      [class.dashboard-stat-card__badge--neutral]="badgeTone() === 'neutral'"
+      [class.dashboard-stat-card__badge--urgent]="badgeTone() === 'urgent'"
+    >
+      {{ badge() }}
+    </span>
+  </div>
+
+  <p class="dashboard-stat-card__label">{{ label() }}</p>
+  <p class="dashboard-stat-card__value">{{ value() }}</p>
+</article>

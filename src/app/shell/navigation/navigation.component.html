@@ -1,0 +1,55 @@
+<div class="uh-navigation">
+  <div class="uh-navigation__brand">
+    <img
+      class="uh-navigation__logo"
+      src="/images/icons/Login/Ultra%20Health%20Logo.png"
+      alt="Ultra Health"
+      width="40"
+      height="40"
+    />
+    <span class="uh-navigation__brand-text">Ultra Health</span>
+  </div>
+
+  <nav class="uh-navigation__menu" aria-label="Menú principal">
+    @for (item of primaryItems; track trackByRoute($index, item)) {
+      <a
+        class="uh-navigation__link"
+        [routerLink]="item.route"
+        routerLinkActive="uh-navigation__link--active"
+        [routerLinkActiveOptions]="{ exact: item.route === '/dashboard' }"
+        (click)="onNavigate()"
+      >
+        <img
+          class="uh-navigation__icon"
+          [src]="iconPath(item.icon)"
+          [alt]=""
+          width="20"
+          height="20"
+        />
+        <span>{{ item.label }}</span>
+      </a>
+    }
+  </nav>
+
+  <div class="uh-navigation__divider"></div>
+
+  <nav class="uh-navigation__menu uh-navigation__menu--secondary" aria-label="Menú secundario">
+    @for (item of secondaryItems; track trackByRoute($index, item)) {
+      <a
+        class="uh-navigation__link"
+        [routerLink]="item.route"
+        routerLinkActive="uh-navigation__link--active"
+        (click)="onNavigate()"
+      >
+        <img
+          class="uh-navigation__icon"
+          [src]="iconPath(item.icon)"
+          [alt]=""
+          width="20"
+          height="20"
+        />
+        <span>{{ item.label }}</span>
+      </a>
+    }
+  </nav>
+</div>

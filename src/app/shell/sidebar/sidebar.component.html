@@ -1,0 +1,12 @@
+@if (shellLayout.sidebarOpen()) {
+  <button
+    class="uh-sidebar__backdrop"
+    type="button"
+    aria-label="Cerrar menú"
+    (click)="closeSidebar()"
+  ></button>
+}
+
+<aside class="uh-sidebar" [class.uh-sidebar--open]="shellLayout.sidebarOpen()">
+  <uh-navigation (navigate)="closeSidebar()" />
+</aside>
