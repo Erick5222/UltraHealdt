@@ -1,0 +1,13 @@
+{
+  "markdown-pdf.styles": [
+    "docs/propuesta-pdf.css"
+  ],
+  "markdown-pdf.displayHeaderFooter": false,
+  "markdown-pdf.headerTemplate": "<span></span>",
+  "markdown-pdf.footerTemplate": "<span></span>",
+  "markdown-pdf.margin.top": "32mm",
+  "markdown-pdf.margin.bottom": "32mm",
+  "markdown-pdf.margin.left": "28mm",
+  "markdown-pdf.margin.right": "28mm",
+  "markdown-pdf.printBackground": true
+}
