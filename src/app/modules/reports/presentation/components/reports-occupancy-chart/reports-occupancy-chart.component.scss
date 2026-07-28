@@ -1,0 +1,121 @@
+.reports-occupancy {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 24px;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.reports-occupancy__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.reports-occupancy__title {
+  margin: 0 0 6px;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #111827;
+}
+
+.reports-occupancy__subtitle {
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #64748b;
+}
+
+.reports-occupancy__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.reports-occupancy__legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.reports-occupancy__legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+}
+
+.reports-occupancy__legend-dot--used {
+  background: #00236f;
+}
+
+.reports-occupancy__legend-dot--available {
+  background: #dbeafe;
+}
+
+.reports-occupancy__chart {
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  gap: 12px;
+  align-items: end;
+  flex: 1;
+  min-height: 220px;
+  padding-top: 8px;
+}
+
+.reports-occupancy__bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  height: 200px;
+  justify-content: flex-end;
+}
+
+.reports-occupancy__bar-stack {
+  position: relative;
+  width: 100%;
+  max-width: 42px;
+  height: var(--capacity);
+  min-height: 48px;
+  border-radius: 8px 8px 4px 4px;
+  background: #eef4ff;
+  overflow: hidden;
+}
+
+.reports-occupancy__bar-used {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: var(--used);
+  border-radius: 8px 8px 4px 4px;
+  background: #00236f;
+}
+
+.reports-occupancy__bar-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  line-height: 1;
+  color: #94a3b8;
+}
+
+@media (max-width: 900px) {
+  .reports-occupancy__header {
+    flex-direction: column;
+  }
+
+  .reports-occupancy__chart {
+    overflow-x: auto;
+    grid-template-columns: repeat(10, 56px);
+    padding-bottom: 8px;
+  }
+}

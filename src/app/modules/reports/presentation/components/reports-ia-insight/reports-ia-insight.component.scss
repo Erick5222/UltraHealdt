@@ -1,0 +1,125 @@
+:host {
+  display: block;
+}
+
+.reports-ia-insight {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 180px;
+  padding: 28px 32px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #00236f 0%, #0058be 100%);
+  color: #ffffff;
+  overflow: hidden;
+}
+
+.reports-ia-insight__content {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+}
+
+.reports-ia-insight__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.reports-ia-insight__icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
+
+.reports-ia-insight__badge {
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  color: #bfdbfe;
+  text-transform: uppercase;
+}
+
+.reports-ia-insight__title {
+  margin: 0 0 10px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #ffffff;
+}
+
+.reports-ia-insight__description {
+  margin: 0;
+  max-width: 640px;
+  font-size: 0.9375rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.reports-ia-insight__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.reports-ia-insight__primary,
+.reports-ia-insight__ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  padding: 0 20px;
+  border-radius: 12px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.reports-ia-insight__primary {
+  border: none;
+  background: #8eb8ff;
+  color: #00236f;
+}
+
+.reports-ia-insight__ghost {
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: transparent;
+  color: #ffffff;
+}
+
+.reports-ia-insight__decoration {
+  position: relative;
+  z-index: 0;
+  flex-shrink: 0;
+  width: 120px;
+  height: 120px;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .reports-ia-insight {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px;
+  }
+
+  .reports-ia-insight__decoration {
+    align-self: flex-end;
+    width: 88px;
+    height: 88px;
+  }
+}

@@ -1,0 +1,41 @@
+<section class="reports-productivity" aria-label="Productividad médica">
+  <header class="reports-productivity__header">
+    <h2 class="reports-productivity__title">Productividad Médica</h2>
+    <p class="reports-productivity__subtitle">Eficiencia promedio por consulta (min)</p>
+  </header>
+
+  <div class="reports-productivity__body">
+    <div class="reports-productivity__chart" role="img" [attr.aria-label]="'Promedio ' + average() + ' minutos por consulta'">
+      <svg class="reports-productivity__donut" viewBox="0 0 120 120" aria-hidden="true">
+        <circle cx="60" cy="60" r="46" fill="none" stroke="#eef4ff" stroke-width="14"/>
+        <circle
+          cx="60"
+          cy="60"
+          r="46"
+          fill="none"
+          stroke="#00236f"
+          stroke-width="14"
+          stroke-linecap="round"
+          [attr.stroke-dasharray]="donutDash()"
+          transform="rotate(-90 60 60)"
+        />
+      </svg>
+      <div class="reports-productivity__chart-center">
+        <strong>{{ average() }}</strong>
+        <span>min/prom</span>
+      </div>
+    </div>
+
+    <ul class="reports-productivity__list">
+      @for (doctor of doctors(); track doctor.name) {
+        <li class="reports-productivity__doctor">
+          <img class="reports-productivity__avatar" [src]="doctor.avatar" alt="" width="32" height="32" />
+          <div>
+            <p class="reports-productivity__doctor-name">{{ doctor.name }}</p>
+            <p class="reports-productivity__doctor-value">{{ doctor.value }}</p>
+          </div>
+        </li>
+      }
+    </ul>
+  </div>
+</section>

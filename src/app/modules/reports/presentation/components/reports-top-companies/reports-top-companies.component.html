@@ -1,0 +1,29 @@
+<section class="reports-top-companies" aria-label="Top empresas y servicios">
+  <div class="reports-top-companies__section">
+    <h2 class="reports-top-companies__title">Top Empresas</h2>
+    <p class="reports-top-companies__subtitle">Volumen de servicios por cliente</p>
+
+    <ul class="reports-top-companies__list">
+      @for (company of companies(); track company.name) {
+        <li class="reports-top-companies__item">
+          <div class="reports-top-companies__item-head">
+            <span class="reports-top-companies__name">{{ company.name }}</span>
+            <span class="reports-top-companies__count">{{ company.services | number: '1.0-0' }} servicios</span>
+          </div>
+          <div class="reports-top-companies__track">
+            <span class="reports-top-companies__fill" [style.width.%]="company.widthPercent"></span>
+          </div>
+        </li>
+      }
+    </ul>
+  </div>
+
+  <div class="reports-top-companies__section">
+    <h3 class="reports-top-companies__tags-title">Servicios Más Demandados</h3>
+    <div class="reports-top-companies__tags">
+      @for (tag of serviceTags(); track tag) {
+        <span class="reports-top-companies__tag">{{ tag }}</span>
+      }
+    </div>
+  </div>
+</section>

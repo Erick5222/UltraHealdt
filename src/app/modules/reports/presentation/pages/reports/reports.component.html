@@ -1,0 +1,52 @@
+<section class="reports">
+  <uh-reports-header (exportPdf)="onExportPdf()" (shareView)="onShareView()" />
+
+  @if (actionMessage()) {
+    <p class="reports__feedback" role="status">{{ actionMessage() }}</p>
+  }
+
+  <uh-reports-filters
+    [filters]="filters()"
+    [dateRangeLabel]="dateRangeLabel()"
+    [statusLabel]="statusLabel()"
+    [companyOptions]="companyOptions"
+    [doctorOptions]="doctorOptions"
+    [examTypeOptions]="examTypeOptions"
+    (dateStartChange)="onDateStartChange($event)"
+    (dateEndChange)="onDateEndChange($event)"
+    (companyChange)="onCompanyChange($event)"
+    (doctorChange)="onDoctorChange($event)"
+    (examTypeChange)="onExamTypeChange($event)"
+    (statusCycle)="onStatusCycle()"
+  />
+
+  <uh-reports-summary [metrics]="dashboardView().summary" />
+
+  <div class="reports__middle-row">
+    <uh-reports-occupancy-chart [bars]="dashboardView().occupancy" />
+    <uh-reports-top-companies
+      [companies]="dashboardView().companies"
+      [serviceTags]="dashboardView().serviceTags"
+    />
+  </div>
+
+  <div class="reports__bottom-row">
+    <uh-reports-medical-productivity
+      [average]="dashboardView().productivityAverage"
+      [donutDash]="dashboardView().productivityDonutDash"
+      [doctors]="dashboardView().doctors"
+    />
+    <uh-reports-income-projections
+      [total]="dashboardView().incomeTotal"
+      [bars]="dashboardView().incomeBars"
+      [growth]="dashboardView().incomeGrowth"
+    />
+  </div>
+
+  @if (showIaInsight()) {
+    <uh-reports-ia-insight
+      (viewProposal)="onViewProposal()"
+      (dismiss)="onDismissInsight()"
+    />
+  }
+</section>

@@ -1,0 +1,35 @@
+<section class="reports-income" aria-label="Ingresos y proyecciones">
+  <header class="reports-income__header">
+    <div>
+      <h2 class="reports-income__title">Ingresos &amp; Proyecciones</h2>
+      <p class="reports-income__subtitle">Comparativa mensual vs Meta anual</p>
+    </div>
+    <div class="reports-income__total">
+      <span class="reports-income__total-label">Total Q3</span>
+      <strong class="reports-income__total-value">{{ total() }}</strong>
+    </div>
+  </header>
+
+  <div class="reports-income__chart" role="img" aria-label="Gráfico de ingresos mensuales">
+    @for (bar of bars(); track bar.label) {
+      <div class="reports-income__bar" [class.reports-income__bar--active]="bar.active">
+        <span
+          class="reports-income__bar-fill"
+          [class.reports-income__bar-fill--muted]="bar.muted"
+          [style.height.%]="bar.height"
+        ></span>
+        <span class="reports-income__bar-label">{{ bar.label }}</span>
+      </div>
+    }
+  </div>
+
+  <footer class="reports-income__footer">
+    <span class="reports-income__growth-label">Crecimiento intermensual</span>
+    <span class="reports-income__growth-value">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+        <path d="M7 10V4M4.5 6.5L7 4L9.5 6.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      {{ growth() }}
+    </span>
+  </footer>
+</section>

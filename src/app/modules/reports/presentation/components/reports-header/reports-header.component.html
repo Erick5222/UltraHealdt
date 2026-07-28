@@ -1,0 +1,38 @@
+<header class="reports-header">
+  <div class="reports-header__intro">
+    <p class="reports-header__eyebrow">
+      <img
+        class="reports-header__eyebrow-icon"
+        src="/images/icons/Dashboard/analisis.svg"
+        alt=""
+        width="16"
+        height="16"
+      />
+      <span>Analytics Dashboard</span>
+    </p>
+    <h1 class="reports-header__title">Reportes</h1>
+    <p class="reports-header__subtitle">
+      Analiza la operación y el rendimiento de la organización con datos en tiempo real y
+      proyecciones estratégicas.
+    </p>
+  </div>
+
+  <div class="reports-header__actions">
+    <button class="reports-header__export-button" type="button" (click)="exportPdf.emit()">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M5 2H11C12.1046 2 13 2.89543 13 4V12C13 13.1046 12.1046 14 11 14H5C3.89543 14 3 13.1046 3 12V4C3 2.89543 3.89543 2 5 2Z" stroke="currentColor" stroke-width="1.3"/>
+        <path d="M6 6H10M6 9H10M6 12H8.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+      </svg>
+      Exportar PDF
+    </button>
+    <button class="reports-header__share-button" type="button" (click)="shareView.emit()">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <circle cx="12" cy="4" r="2" stroke="currentColor" stroke-width="1.3"/>
+        <circle cx="4" cy="8" r="2" stroke="currentColor" stroke-width="1.3"/>
+        <circle cx="12" cy="12" r="2" stroke="currentColor" stroke-width="1.3"/>
+        <path d="M6 7.2L10 4.8M6 8.8L10 11.2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+      </svg>
+      Compartir Vista
+    </button>
+  </div>
+</header>
