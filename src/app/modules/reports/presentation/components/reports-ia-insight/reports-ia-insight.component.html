@@ -1,0 +1,34 @@
+<section class="reports-ia-insight">
+  <div class="reports-ia-insight__content">
+    <header class="reports-ia-insight__header">
+      <img
+        class="reports-ia-insight__icon"
+        src="/images/icons/Dashboard/ia-lightning.svg"
+        alt=""
+        width="16"
+        height="16"
+      />
+      <span class="reports-ia-insight__badge">IA Insight</span>
+    </header>
+
+    <h2 class="reports-ia-insight__title">Optimización de Agenda</h2>
+    <p class="reports-ia-insight__description">
+      Detectamos que el 25% de los espacios entre las 12:00 y las 14:00 están subutilizados.
+      Sugerimos habilitar jornadas de "Exámenes Exprés" para empleados administrativos en esta
+      franja.
+    </p>
+
+    <div class="reports-ia-insight__actions">
+      <button class="reports-ia-insight__primary" type="button" (click)="viewProposal.emit()">Ver Propuesta</button>
+      <button class="reports-ia-insight__ghost" type="button" (click)="dismiss.emit()">Descartar</button>
+    </div>
+  </div>
+
+  <img
+    class="reports-ia-insight__decoration"
+    src="/images/illustrations/dashboard/ia-gear.svg"
+    alt=""
+    width="120"
+    height="120"
+  />
+</section>

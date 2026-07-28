@@ -1,0 +1,21 @@
+<section class="reports-summary" aria-label="Resumen de reportes">
+  @for (metric of metrics(); track metric.label) {
+    <article class="reports-summary__card">
+      <div class="reports-summary__card-top">
+        <span class="reports-summary__icon reports-summary__icon--primary" aria-hidden="true">
+          <img [src]="metric.icon" alt="" width="22" height="22" />
+        </span>
+        <span
+          class="reports-summary__trend"
+          [class.reports-summary__trend--up]="metric.trendDirection === 'up'"
+          [class.reports-summary__trend--down]="metric.trendDirection === 'down'"
+        >
+          {{ metric.trend }}
+        </span>
+      </div>
+      <p class="reports-summary__label">{{ metric.label }}</p>
+      <p class="reports-summary__value">{{ metric.value }}</p>
+      <p class="reports-summary__subtext">{{ metric.subtext }}</p>
+    </article>
+  }
+</section>

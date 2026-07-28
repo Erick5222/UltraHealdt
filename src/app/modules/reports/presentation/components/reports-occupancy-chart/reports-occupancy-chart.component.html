@@ -1,0 +1,33 @@
+<section class="reports-occupancy" aria-label="Ocupación de consultorios">
+  <header class="reports-occupancy__header">
+    <div>
+      <h2 class="reports-occupancy__title">Ocupación de Consultorios</h2>
+      <p class="reports-occupancy__subtitle">Horarios utilizados vs Capacidad instalada</p>
+    </div>
+    <div class="reports-occupancy__legend">
+      <span class="reports-occupancy__legend-item">
+        <span class="reports-occupancy__legend-dot reports-occupancy__legend-dot--used"></span>
+        Utilizado
+      </span>
+      <span class="reports-occupancy__legend-item">
+        <span class="reports-occupancy__legend-dot reports-occupancy__legend-dot--available"></span>
+        Disponible
+      </span>
+    </div>
+  </header>
+
+  <div class="reports-occupancy__chart" role="img" aria-label="Gráfico de ocupación por hora">
+    @for (bar of bars(); track bar.label) {
+      <div class="reports-occupancy__bar">
+        <div
+          class="reports-occupancy__bar-stack"
+          [style.--capacity.%]="bar.capacity"
+          [style.--used.%]="bar.used"
+        >
+          <span class="reports-occupancy__bar-used"></span>
+        </div>
+        <span class="reports-occupancy__bar-label">{{ bar.label }}</span>
+      </div>
+    }
+  </div>
+</section>

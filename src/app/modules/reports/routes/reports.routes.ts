@@ -1,3 +1,9 @@
 ﻿import { Routes } from '@angular/router';
 
-export const REPORTS_ROUTES: Routes = [];
+export const REPORTS_ROUTES: Routes = [
+  {
+    path: '',
+    loadComponent: () =>
+      import('../presentation/pages/reports/reports.component').then((m) => m.ReportsComponent),
+  },
+];
